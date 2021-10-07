@@ -1,8 +1,16 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven'
+    id 'maven-publish'
+    id 'org.springframework.boot' version '2.1.6.RELEASE' apply false
+    id 'com.adarshr.test-logger' version '1.7.0'
+    id 'com.jfrog.bintray' version '1.8.4' apply false
+    id 'jacoco'
 }
 
-group 'org.example'
+group 'com.velocia.cacophony'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -10,8 +18,16 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    annotationProcessor 'org.springframework.boot:spring-boot-autoconfigure-processor'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation project(':cacophony-lib')
+
+    implementation 'org.springframework.boot:spring-boot:2.5.5'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.5.5'
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok:1.18.20'
 }
 
 test {

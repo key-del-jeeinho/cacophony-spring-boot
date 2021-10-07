@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "cacophony.token",
+      "type": "java.lang.String",
+      "description": "token of discord bot."
+    }
+  ] }

@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    implementation project(':cacophony-spring-boot-starter')
+    implementation project(':cacophony-lib')
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }

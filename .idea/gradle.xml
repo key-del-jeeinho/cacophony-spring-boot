@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/cacophony-example" />
             <option value="$PROJECT_DIR$/cacophony-lib" />
             <option value="$PROJECT_DIR$/cacophony-spring-boot-autoconfigure" />
             <option value="$PROJECT_DIR$/cacophony-spring-boot-starter" />

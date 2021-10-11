@@ -1,19 +1,47 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.5.5'
+//    id 'io.spring.dependency-management'
 }
 
 group 'com.velocia.cacophony'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-}
+    group 'com.velocia.cacophony'
+    version '0.0.1-SNAPSHOT'
 
-test {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+        maven {
+            name 'm2-dv8tion'
+            url 'https://m2.dv8tion.net/releases'
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-autoconfigure-processor:2.5.5'
+        implementation 'org.springframework.boot:spring-boot-configuration-processor:2.5.5'
+
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+        compileOnly 'org.projectlombok:lombok:1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        implementation("net.dv8tion:JDA:4.3.0_334") {
+            exclude module: 'opus-java'
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }

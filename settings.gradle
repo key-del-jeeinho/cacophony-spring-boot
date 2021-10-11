@@ -2,4 +2,5 @@ rootProject.name = 'cacophony-spring-boot'
 include 'cacophony-spring-boot-starter'
 include 'cacophony-spring-boot-autoconfigure'
 include 'cacophony-lib'
+include 'cacophony-example'
 

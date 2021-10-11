@@ -2,6 +2,7 @@ package com.velocia.cacophony.domain.event;
 
 import com.velocia.cacophony.domain.dto.ChannelDto;
 import com.velocia.cacophony.domain.dto.MessageDto;
+import com.velocia.cacophony.domain.dto.ServerDto;
 import com.velocia.cacophony.domain.dto.UserDto;
 import com.velocia.cacophony.domain.event.events.ChatEvent;
 import com.velocia.cacophony.domain.event.events.JoinEvent;
@@ -27,6 +28,8 @@ public class EventRepeater extends ListenerAdapter {
     @Override
     public void onGuildJoin(@NotNull GuildJoinEvent event) {
         super.onGuildJoin(event);
-        listenerCaller.callEvent(new JoinEvent());
+        UserDto user = new UserDto();
+        ServerDto server = new ServerDto();
+        listenerCaller.callEvent(new JoinEvent(user, server));
     }
 }

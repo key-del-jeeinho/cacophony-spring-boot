@@ -1,25 +1,20 @@
 package com.velocia.cacophony.domain.event;
 
 import com.velocia.cacophony.domain.event.events.Event;
-import com.velocia.cacophony.domain.event.enum_type.EventType;
-import com.velocia.cacophony.domain.event.exception.EventTypeNotDefinedException;
 import com.velocia.cacophony.domain.listener.EventListener;
 import net.dv8tion.jda.api.JDA;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class ListenerCaller {
-    @Autowired
-    private JDA jda;
-    Map<Class, List<EventListener>> listeners;
+    private final JDA jda;
+    Map<Class<? extends Event>, List<EventListener>> listeners;
 
-    public ListenerCaller() {
+    public ListenerCaller(JDA jda) {
+        this.jda = jda;
         this.listeners = new HashMap<>();
     }
 

@@ -1,4 +1,4 @@
-import com.velocia.cacophony.domain.config.CacophonyConfiguration;
+import config.CacophonyConfiguration;
 import com.velocia.cacophony.domain.event.events.ChatEvent;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;

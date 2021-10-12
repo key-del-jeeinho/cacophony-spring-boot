@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ListenerCaller {
-    private final JDA jda;
     Map<Class<? extends Event>, List<EventListener>> listeners;
 
-    public ListenerCaller(JDA jda) {
-        this.jda = jda;
+    public ListenerCaller() {
         this.listeners = new HashMap<>();
     }
 

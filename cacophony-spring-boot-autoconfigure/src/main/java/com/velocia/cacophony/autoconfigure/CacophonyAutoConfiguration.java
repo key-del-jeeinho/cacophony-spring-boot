@@ -40,6 +40,7 @@ public class CacophonyAutoConfiguration {
     private void initJda() {
         try {
             jda = JDABuilder.createDefault(cacophonyProperties.getToken()).build();
+            jda.addEventListener(eventRepeater());
         } catch (LoginException e) {
             throw new BotCreationFailureException(e);
         }
@@ -62,8 +63,7 @@ public class CacophonyAutoConfiguration {
     }
 
     private void initListenerCaller() {
-        throw new RuntimeException();
-//        listenerCaller = new ListenerCaller();
+        listenerCaller = new ListenerCaller();
     }
 
     @Bean

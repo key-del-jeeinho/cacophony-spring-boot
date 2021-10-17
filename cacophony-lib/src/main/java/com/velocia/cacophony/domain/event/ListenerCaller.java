@@ -2,7 +2,6 @@ package com.velocia.cacophony.domain.event;
 
 import com.velocia.cacophony.domain.event.events.Event;
 import com.velocia.cacophony.domain.listener.EventListener;
-import net.dv8tion.jda.api.JDA;
 
 import java.util.ArrayList;
 import java.util.HashMap;

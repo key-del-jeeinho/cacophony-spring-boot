@@ -1,4 +1,4 @@
-package com.velocia.cacophony.autoconfigure;
+package com.velocia.cacophony.autoconfigure.prop;
 
 import lombok.Getter;
 import lombok.Setter;

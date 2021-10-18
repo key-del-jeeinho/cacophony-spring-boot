@@ -1,2 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.velocia.cacophony.autoconfigure.CacophonyAutoConfiguration
+  com.velocia.cacophony.autoconfigure.config.EventRepeaterAutoConfiguration, \
+  com.velocia.cacophony.autoconfigure.config.JdaAutoConfiguration, \
+  com.velocia.cacophony.autoconfigure.config.ListenerCallerAutoConfiguration, \
+  com.velocia.cacophony.autoconfigure.config.StaticInitializationAutoConfiguration

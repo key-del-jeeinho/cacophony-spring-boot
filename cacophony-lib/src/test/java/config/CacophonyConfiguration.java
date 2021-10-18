@@ -8,6 +8,12 @@ import net.dv8tion.jda.api.JDABuilder;
 
 import javax.security.auth.login.LoginException;
 
+/**
+ * 테스트용 Configuration 입니다.
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 public class CacophonyConfiguration {
     private static ListenerCaller listenerCaller;
     private static EventRepeater eventRepeater;

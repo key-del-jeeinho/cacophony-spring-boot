@@ -8,6 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Repeat 된 Event 를 Calling 받아 Listener 들을 호출하는 클래스입니다.
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 public class ListenerCaller {
     Map<Class<? extends Event>, List<EventListener>> listeners;
 

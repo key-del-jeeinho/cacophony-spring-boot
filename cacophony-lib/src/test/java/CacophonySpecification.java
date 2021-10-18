@@ -10,6 +10,12 @@ import static com.velocia.cacophony.domain.flow.FlowEntry.when;
 import static com.velocia.cacophony.domain.trigger.TriggerEntry.onChat;
 import static org.mockito.Mockito.mock;
 
+/**
+ * Cacophony API 에 대한 스펙 명세서 입니다
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 public class CacophonySpecification {
 
     @Test

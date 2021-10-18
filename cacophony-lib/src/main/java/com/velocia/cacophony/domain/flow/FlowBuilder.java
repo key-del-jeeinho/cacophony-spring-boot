@@ -7,6 +7,12 @@ import com.velocia.cacophony.domain.trigger.TriggerGroup;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Cacophony 의 핵심 도메인인 Flow 를 생성하는 Builder 입니다
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 public class FlowBuilder {
     private final ListenerCaller listenerCaller;
     TriggerGroup triggers;

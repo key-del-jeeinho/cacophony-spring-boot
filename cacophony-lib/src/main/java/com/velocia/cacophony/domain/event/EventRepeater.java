@@ -12,6 +12,12 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * JDA 에서 발생한 Event 를 CacophonyEvent 로 바꾸어서 중계(Repeat) 해주는 클래스입니다.
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 @RequiredArgsConstructor
 public class EventRepeater extends ListenerAdapter {
     private final ListenerCaller listenerCaller;

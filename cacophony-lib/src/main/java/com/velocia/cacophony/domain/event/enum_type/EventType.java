@@ -8,6 +8,12 @@ import com.velocia.cacophony.domain.event.exception.EventTypeNotFoundException;
 import java.util.Arrays;
 import java.util.Optional;
 
+/**
+ * Event 의 형식을 명시하는 Enum 입니다.
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 public enum EventType {
     CHAT_EVENT(ChatEvent.class), JOIN_EVENT(JoinEvent.class);
 

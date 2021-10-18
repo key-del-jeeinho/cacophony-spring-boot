@@ -13,6 +13,12 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.security.auth.login.LoginException;
 
+/**
+ * JDA 클라이언트를 사용하기위한 Configuration 입니다.
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 @Configuration
 @EnableConfigurationProperties(CacophonyProperties.class)
 @RequiredArgsConstructor

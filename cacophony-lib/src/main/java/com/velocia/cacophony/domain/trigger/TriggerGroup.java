@@ -8,6 +8,12 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Flow 가 실행될 Trigger 를 모아놓은 Group 입니다
+ *
+ * @author JeeInho
+ * @since 0.0.1-SNAPSHOT
+ */
 public class TriggerGroup {
     @Getter
     private final List<Class<? extends Event>> classes;

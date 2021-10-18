@@ -3,12 +3,14 @@ package com.velocia.cacophony.example;
 import com.velocia.cacophony.autoconfigure.prop.CacophonyProperties;
 import com.velocia.cacophony.autoconfigure.UseCacophony;
 import com.velocia.cacophony.domain.event.events.ChatEvent;
+import com.velocia.cacophony.domain.listener.EventListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import static com.velocia.cacophony.domain.flow.FlowEntry.when;
 import static com.velocia.cacophony.domain.trigger.TriggerEntry.onChat;
+import static com.velocia.cacophony.domain.trigger.TriggerEntry.onJoin;
 
 @SpringBootApplication
 @UseCacophony
@@ -23,9 +25,9 @@ public class CacophonyApplication {
                 event -> System.out.println(event.getClass().getSimpleName() + " 가 발생하였습니다!")
         ).complete();
         when(
-                onChat()
+                onJoin()
         ).doSomething(
-                event -> System.out.println("chat is | " + ((ChatEvent)event).getMessage().getMessage())
+                (EventListener<ChatEvent>) event -> System.out.println(event.getMessage().getJumpUrl())
         ).complete();
     }
 }

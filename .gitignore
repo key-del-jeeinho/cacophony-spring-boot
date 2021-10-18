@@ -27,3 +27,6 @@ nbdist/
 ### Spring Boot ###
 application.yml
 application.properties
+
+### Javadoc ###
+/javadoc

@@ -2,6 +2,7 @@ package com.velocia.cacophony.domain.event;
 
 import com.velocia.cacophony.domain.event.events.Event;
 import com.velocia.cacophony.domain.listener.EventListener;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @author JeeInho
  * @since 0.0.1-SNAPSHOT
  */
+@Slf4j
 public class ListenerCaller {
     Map<Class<? extends Event>, List<EventListener>> listeners;
 
@@ -23,8 +25,15 @@ public class ListenerCaller {
 
     public void callEvent(Event event) {
         Class<? extends Event> clazz = event.getClass();
-        if(listeners.containsKey(clazz))
-            listeners.get(clazz).forEach(listener -> listener.call(event));
+        if(listeners.containsKey(clazz)) {
+            try {
+                listeners.get(clazz).forEach(listener -> listener.call(clazz.cast(event)));
+            } catch (ClassCastException e) {
+                log.warn("Flow 의 Trigger 와 Action 에서 취급하는 Event 가 다릅니다!");
+                log.warn("발생한 이벤트(Trigger) : " + clazz.getSimpleName());
+                log.error("오류로 인해 Flow 의 특정 Component 가 Skip 되었습니다!");
+            }
+        }
     }
 
     public <T extends Event> void addListener(Class<T> clazz, EventListener listener) {

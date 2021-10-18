@@ -6,6 +6,7 @@ import com.velocia.cacophony.global.exception.BotCreationFailureException;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.requests.GatewayIntent;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +32,9 @@ public class JdaAutoConfiguration {
         JDA jda;
 
         try {
-            jda = JDABuilder.createDefault(cacophonyProperties.getToken()).build();
+            jda = JDABuilder.createDefault(cacophonyProperties.getToken()).
+                    enableIntents(GatewayIntent.GUILD_MEMBERS)
+                    .build();
             jda.addEventListener(eventRepeater);
         } catch (LoginException e) {
             throw new BotCreationFailureException(e);

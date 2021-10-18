@@ -1,7 +1,7 @@
 package com.velocia.cacophony.domain.event.events;
 
-import com.velocia.cacophony.domain.dto.ServerDto;
-import com.velocia.cacophony.domain.dto.UserDto;
+import com.velocia.cacophony.domain.event.dto.ServerDto;
+import com.velocia.cacophony.domain.event.dto.UserDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

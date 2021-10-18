@@ -2,6 +2,7 @@ package com.velocia.cacophony.domain.flow;
 
 import com.velocia.cacophony.domain.event.ListenerCaller;
 import com.velocia.cacophony.domain.event.events.Event;
+import com.velocia.cacophony.domain.listener.EventListener;
 import com.velocia.cacophony.domain.trigger.TriggerGroup;
 
 import java.util.List;
@@ -13,10 +14,10 @@ import java.util.function.Consumer;
  * @author JeeInho
  * @since 0.0.1-SNAPSHOT
  */
-public class FlowBuilder {
+public class FlowBuilder<T extends Event> {
     private final ListenerCaller listenerCaller;
     TriggerGroup triggers;
-    Consumer<Event> doWhat;
+    EventListener<T> doWhat;
 
     public FlowBuilder(ListenerCaller listenerCaller) {
         this.listenerCaller = listenerCaller;
@@ -27,13 +28,13 @@ public class FlowBuilder {
         return this;
     }
 
-    public FlowBuilder doSomething(Consumer<Event> doWhat) {
+    public FlowBuilder doSomething(EventListener<T> doWhat) {
         this.doWhat = doWhat;
         return this;
     }
 
     public void complete() {
         List<Class<? extends Event>> classes = triggers.getClasses();
-        classes.forEach(clazz -> listenerCaller.addListener(clazz, event -> doWhat.accept(event)));
+        classes.forEach(clazz -> listenerCaller.addListener(clazz, doWhat));
     }
 }

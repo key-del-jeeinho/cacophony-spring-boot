@@ -5,6 +5,7 @@ plugins {
     id 'java-gradle-plugin'
     id 'maven-publish'
     id 'signing'
+    id 'net.researchgate.release' version '2.8.1'
 //    id 'io.spring.dependency-management'
 }
 
@@ -13,14 +14,14 @@ test.enabled = false
 
 group 'io.github.key-del-jeeinho'
 archivesBaseName = "cacophony-lib"
-version '1.0-SNAPSHOT'
+version '1.0.0-RELEASE'
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'java-library'
 
     group 'com.velocia.cacophony'
-    version '0.0.1'
+    version '1.0.0-RELEASE'
 
     repositories {
         mavenCentral()
@@ -56,20 +57,5 @@ subprojects {
 
     test {
         useJUnitPlatform()
-    }
-
-    publishing {
-        publications {
-        }
-        repositories {
-            maven {
-                name = "cacophony-spring-boot-starter" //  optional target repository name
-                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                credentials {
-                    username = project.ossrhUsername
-                    password = project.ossrhPassword
-                }
-            }
-        }
     }
 }

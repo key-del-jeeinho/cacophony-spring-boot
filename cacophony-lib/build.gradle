@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.velocia.cacophony'
-version '1.0-SNAPSHOT'
+version '1.0.0-RELEASE'
 
 repositories {
     mavenCentral()
@@ -32,4 +32,21 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+        }
+    }
+    repositories {
+        maven {
+            name = "cacophony-lib"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = project.ossrhUsername
+                password = project.ossrhPassword
+            }
+        }
+    }
 }

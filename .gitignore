@@ -30,3 +30,7 @@ application.properties
 
 ### Javadoc ###
 /javadoc
+
+### GnuPG ###
+gradle.properties
+*.gpg

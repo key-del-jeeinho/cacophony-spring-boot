@@ -1,10 +1,18 @@
 plugins {
     id 'java'
+    id 'java-library'
     id 'org.springframework.boot' version '2.5.5'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'signing'
 //    id 'io.spring.dependency-management'
 }
 
-group 'com.velocia.cacophony'
+bootJar.enabled = false
+test.enabled = false
+
+group 'io.github.key-del-jeeinho'
+archivesBaseName = "cacophony-lib"
 version '1.0-SNAPSHOT'
 
 subprojects {
@@ -12,7 +20,7 @@ subprojects {
     apply plugin: 'java-library'
 
     group 'com.velocia.cacophony'
-    version '0.0.1-SNAPSHOT'
+    version '0.0.1'
 
     repositories {
         mavenCentral()
@@ -41,9 +49,27 @@ subprojects {
         implementation("net.dv8tion:JDA:4.3.0_334") {
             exclude module: 'opus-java'
         }
+
+        // https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-gpg-plugin
+        implementation 'org.apache.maven.plugins:maven-gpg-plugin:3.0.1'
     }
 
     test {
         useJUnitPlatform()
+    }
+
+    publishing {
+        publications {
+        }
+        repositories {
+            maven {
+                name = "cacophony-spring-boot-starter" //  optional target repository name
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username = project.ossrhUsername
+                    password = project.ossrhPassword
+                }
+            }
+        }
     }
 }

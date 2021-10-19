@@ -1,8 +1,8 @@
 package config;
 
-import com.velocia.cacophony.domain.event.EventRepeater;
-import com.velocia.cacophony.domain.event.ListenerCaller;
-import com.velocia.cacophony.global.exception.BotCreationFailureException;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.EventRepeater;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
+import io.github.key_del_jeeinho.cacophony_lib.global.exception.BotCreationFailureException;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 

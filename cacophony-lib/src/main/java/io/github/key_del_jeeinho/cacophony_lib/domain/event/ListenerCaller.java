@@ -28,7 +28,6 @@ public class ListenerCaller {
         if(listenerMap.containsKey(clazz)) {
             for (EventListener listener : listenerMap.get(clazz)) {
                 try {
-                    System.out.println("테스트입니다 + " + clazz);
                     listener.call(clazz.cast(event));
                 } catch (ClassCastException e) {
                     log.warn("Flow 의 Trigger 와 Action 에서 취급하는 Event 가 다릅니다!");

@@ -1,8 +1,9 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.event.events;
+package io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.EmbedMessageDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.MessageDto;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

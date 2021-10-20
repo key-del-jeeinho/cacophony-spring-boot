@@ -1,8 +1,9 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.event.events;
+package io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.ChannelDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.MessageDto;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.entities.Message;

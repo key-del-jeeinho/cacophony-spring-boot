@@ -1,6 +1,12 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.trigger;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.*;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.PrivateChatEvent;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ServerChatEvent;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.PrivateReactEvent;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.ReactEvent;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.ServerReactEvent;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -42,6 +48,16 @@ public class TriggerGroup {
             return new TriggerGroup(list);
         }
 
+        public TriggerGroup onDM() {
+            list.add(PrivateChatEvent.class);
+            return new TriggerGroup(list);
+        }
+
+        public TriggerGroup onChatAtServer() {
+            list.add(ServerChatEvent.class);
+            return new TriggerGroup(list);
+        }
+
         public TriggerGroup onJoin() {
             list.add(JoinEvent.class);
             return new TriggerGroup(list);
@@ -54,6 +70,16 @@ public class TriggerGroup {
 
         public TriggerGroup onReact() {
             list.add(ReactEvent.class);
+            return new TriggerGroup(list);
+        }
+
+        public TriggerGroup onReactAtPrivate() {
+            list.add(PrivateReactEvent.class);
+            return new TriggerGroup(list);
+        }
+
+        public TriggerGroup onReactAtServer() {
+            list.add(ServerReactEvent.class);
             return new TriggerGroup(list);
         }
     }

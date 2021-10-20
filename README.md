@@ -70,6 +70,8 @@ when( //EntryBlock 을 설정하는 진입지점(EntryPoint = when)
     )
 ).complete(); //완성된 Flow 를 디스코드 봇에 등록한다
 ```
+_[이곳](https://github.com/key-del-jeeinho/cacophony-spring-boot/tree/master/cacophony-example) 에서 더 많은 예제들을 확인하세요!_
+
 진입지점은 Flow 나 Block 등을 더욱 편리하게 생성할 수 있도록 구성된 static method 입니다.
 
 진입지점 method 로는 when(), onChat(), onReact() 등이 있습니다

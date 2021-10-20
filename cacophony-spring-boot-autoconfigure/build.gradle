@@ -1,12 +1,11 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'com.adarshr.test-logger' version '1.7.0'
-    id 'com.jfrog.bintray' version '1.8.4' apply false
     id 'jacoco'
+    id 'signing'
 }
 
-group 'com.velocia.cacophony'
+group 'io.github.key-del-jeeinho'
 version '1.0.0-RELEASE'
 
 repositories {
@@ -24,19 +23,78 @@ test {
     useJUnitPlatform()
 }
 
+task javadocJar(type: Jar) {
+    archiveClassifier.set 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set 'sources'
+    from sourceSets.main.allSource
+}
+
+/*
+artifacts {
+    archives javadocJar, sourcesJar
+}
+ */
+
+signing {
+    sign publishing.publications
+    //sign configurations.archives
+}
+
+javadoc {
+    options.addStringOption("locale","ko_KR");
+    options.addStringOption("encoding","UTF-8");
+    options.addStringOption("charset","UTF-8");
+    options.addStringOption("docencoding","UTF-8");
+}
+
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        maven(MavenPublication) {
+            groupId = 'io.github.key-del-jeeinho'
+            artifactId = 'cacophony-spring-boot-autoconfigure'
+            version = '1.0.0-RELEASE'
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Cacophony SpringBoot Autoconfigure'
+                description = "This project is a autoconfigure module that helps you use the cacopony library easily in a spring boot environment."
+                url = 'https://github.com/key-del-jeeinho/cacophony-spring-boot'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'velocia'
+                        name = 'JeeInho'
+                        email = 'velocia.developer@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/key-del-jeeinho/cacophony-spring-boot.git'
+                    developerConnection = 'scm:git:ssh://github.com/key-del-jeeinho/cacophony-spring-boot.git'
+                    url = 'https://github.com/key-del-jeeinho/cacophony-spring-boot/'
+                }
+            }
         }
     }
     repositories {
         maven {
-            name = "cacophony-spring-boot-autoconfigure"
-            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             credentials {
                 username = project.ossrhUsername
                 password = project.ossrhPassword
             }
+            name = "OSSRH"
+            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
         }
     }
 }

@@ -1,13 +1,15 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id 'jacoco'
+    id 'signing'
 }
 
-group 'com.velocia.cacophony'
+group 'io.github.key-del-jeeinho'
 version '1.0.0-RELEASE'
 
 repositories {
     mavenCentral()
-    google()
     maven {
         name 'm2-dv8tion'
         url 'https://m2.dv8tion.net/releases'
@@ -15,6 +17,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/com.vanniktech.maven.publish.base/com.vanniktech.maven.publish.base.gradle.plugin
+    implementation group: 'com.vanniktech.maven.publish.base', name: 'com.vanniktech.maven.publish.base.gradle.plugin', version: '0.18.0', ext: 'pom'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     compileOnly 'org.projectlombok:lombok:1.18.20'
@@ -34,19 +39,78 @@ test {
     useJUnitPlatform()
 }
 
+task javadocJar(type: Jar) {
+    archiveClassifier.set 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier.set 'sources'
+    from sourceSets.main.allSource
+}
+
+/*
+artifacts {
+    archives javadocJar, sourcesJar
+}
+ */
+
+signing {
+    sign publishing.publications
+    //sign configurations.archives
+}
+
+javadoc {
+    options.addStringOption("locale","ko_KR");
+    options.addStringOption("encoding","UTF-8");
+    options.addStringOption("charset","UTF-8");
+    options.addStringOption("docencoding","UTF-8");
+}
+
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        maven(MavenPublication) {
+            groupId = 'io.github.key-del-jeeinho'
+            artifactId = 'cacophony-lib'
+            version = '1.0.0-RELEASE'
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Cacophony Library'
+                description = "jda additional library"
+                url = 'https://github.com/key-del-jeeinho/cacophony-spring-boot'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'velocia'
+                        name = 'JeeInho'
+                        email = 'velocia.developer@gmail.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/key-del-jeeinho/cacophony-spring-boot.git'
+                    developerConnection = 'scm:git:ssh://github.com/key-del-jeeinho/cacophony-spring-boot.git'
+                    url = 'https://github.com/key-del-jeeinho/cacophony-spring-boot/'
+                }
+            }
         }
     }
     repositories {
         maven {
-            name = "cacophony-lib"
-            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             credentials {
                 username = project.ossrhUsername
                 password = project.ossrhPassword
             }
+            name = "OSSRH"
+            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
         }
     }
 }

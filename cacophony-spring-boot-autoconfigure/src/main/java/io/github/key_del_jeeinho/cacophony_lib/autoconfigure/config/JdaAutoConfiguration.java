@@ -25,17 +25,15 @@ import javax.security.auth.login.LoginException;
 @RequiredArgsConstructor
 public class JdaAutoConfiguration {
     private final CacophonyProperties cacophonyProperties;
-    private final JoinQuitEventRepeater joinQuitEventRepeater;
 
     @Bean @ConditionalOnMissingBean
     public JDA jda() {
         JDA jda;
 
         try {
-            jda = JDABuilder.createDefault(cacophonyProperties.getToken()).
-                    enableIntents(GatewayIntent.GUILD_MEMBERS)
+            jda = JDABuilder.createDefault(cacophonyProperties.getToken())
+                    .enableIntents(GatewayIntent.GUILD_MEMBERS)
                     .build();
-            jda.addEventListener(joinQuitEventRepeater);
         } catch (LoginException e) {
             throw new BotCreationFailureException(e);
         }

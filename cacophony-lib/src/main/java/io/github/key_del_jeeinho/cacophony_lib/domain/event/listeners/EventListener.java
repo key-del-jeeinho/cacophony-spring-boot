@@ -11,7 +11,4 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 @FunctionalInterface
 public interface EventListener<T extends Event> {
     void call(T event);
-    default T getInstance() {
-        return (T)new Event(){};
-    }
 }

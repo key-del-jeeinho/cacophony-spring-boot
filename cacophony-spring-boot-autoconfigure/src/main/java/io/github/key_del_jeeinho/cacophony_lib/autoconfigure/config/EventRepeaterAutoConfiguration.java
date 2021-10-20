@@ -3,7 +3,9 @@ package io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.ChatEventRepeater;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.ReactEventRepeater;
 import lombok.RequiredArgsConstructor;
+import net.dv8tion.jda.api.JDA;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,14 +19,26 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class EventRepeaterAutoConfiguration {
     private final ListenerCaller listenerCaller;
+    private final JDA jda;
 
     @Bean
     public JoinQuitEventRepeater joinQuitEventRepeater() {
-        return new JoinQuitEventRepeater(listenerCaller);
+        JoinQuitEventRepeater repeater = new JoinQuitEventRepeater(listenerCaller);
+        jda.addEventListener(repeater);
+        return repeater;
     }
 
     @Bean
     public ChatEventRepeater chatEventRepeater() {
-        return new ChatEventRepeater(listenerCaller);
+        ChatEventRepeater repeater = new ChatEventRepeater(listenerCaller);
+        jda.addEventListener(repeater);
+        return repeater;
+    }
+
+    @Bean
+    public ReactEventRepeater reactEventRepeater() {
+        ReactEventRepeater repeater = new ReactEventRepeater(listenerCaller);
+        jda.addEventListener(repeater);
+        return repeater;
     }
 }

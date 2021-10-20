@@ -26,12 +26,15 @@ public class ListenerCaller {
     public void callEvent(Event event) {
         Class<? extends Event> clazz = event.getClass();
         if(listenerMap.containsKey(clazz)) {
-            try {
-                listenerMap.get(clazz).forEach(listener -> listener.call(clazz.cast(event)));
-            } catch (ClassCastException e) {
-                log.warn("Flow 의 Trigger 와 Action 에서 취급하는 Event 가 다릅니다!");
-                log.warn("발생한 이벤트(Trigger) : " + clazz.getSimpleName());
-                log.error("오류로 인해 Flow 의 특정 Component 가 Skip 되었습니다!");
+            for (EventListener listener : listenerMap.get(clazz)) {
+                try {
+                    System.out.println("테스트입니다 + " + clazz);
+                    listener.call(clazz.cast(event));
+                } catch (ClassCastException e) {
+                    log.warn("Flow 의 Trigger 와 Action 에서 취급하는 Event 가 다릅니다!");
+                    log.warn("발생한 이벤트(Trigger) : " + clazz.getSimpleName());
+                    log.error("오류로 인해 Flow 의 특정 Component 가 Skip 되었습니다!");
+                }
             }
         }
     }

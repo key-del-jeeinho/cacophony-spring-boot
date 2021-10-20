@@ -1,7 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config;
 
 import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.prop.CacophonyProperties;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.EventRepeater;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.global.exception.BotCreationFailureException;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
@@ -25,7 +25,7 @@ import javax.security.auth.login.LoginException;
 @RequiredArgsConstructor
 public class JdaAutoConfiguration {
     private final CacophonyProperties cacophonyProperties;
-    private final EventRepeater eventRepeater;
+    private final JoinQuitEventRepeater joinQuitEventRepeater;
 
     @Bean @ConditionalOnMissingBean
     public JDA jda() {
@@ -35,7 +35,7 @@ public class JdaAutoConfiguration {
             jda = JDABuilder.createDefault(cacophonyProperties.getToken()).
                     enableIntents(GatewayIntent.GUILD_MEMBERS)
                     .build();
-            jda.addEventListener(eventRepeater);
+            jda.addEventListener(joinQuitEventRepeater);
         } catch (LoginException e) {
             throw new BotCreationFailureException(e);
         }

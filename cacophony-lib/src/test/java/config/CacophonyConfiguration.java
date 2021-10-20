@@ -1,6 +1,6 @@
 package config;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.EventRepeater;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
 import io.github.key_del_jeeinho.cacophony_lib.global.exception.BotCreationFailureException;
 import net.dv8tion.jda.api.JDA;
@@ -16,7 +16,7 @@ import javax.security.auth.login.LoginException;
  */
 public class CacophonyConfiguration {
     private static ListenerCaller listenerCaller;
-    private static EventRepeater eventRepeater;
+    private static JoinQuitEventRepeater joinQuitEventRepeater;
     private static JDA jda;
 
     public static JDA jda() {
@@ -34,8 +34,8 @@ public class CacophonyConfiguration {
         return listenerCaller;
     }
 
-    public static EventRepeater eventRepeater() {
-        if(eventRepeater == null) eventRepeater = new EventRepeater(listenerCaller());
-        return eventRepeater;
+    public static JoinQuitEventRepeater eventRepeater() {
+        if(joinQuitEventRepeater == null) joinQuitEventRepeater = new JoinQuitEventRepeater(listenerCaller());
+        return joinQuitEventRepeater;
     }
 }

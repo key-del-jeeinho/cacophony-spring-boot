@@ -1,7 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.listener.EventListener;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.listeners.EventListener;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;

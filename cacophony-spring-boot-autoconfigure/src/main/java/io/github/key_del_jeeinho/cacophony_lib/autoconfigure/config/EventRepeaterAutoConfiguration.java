@@ -1,7 +1,8 @@
 package io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.EventRepeater;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.ChatEventRepeater;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +19,12 @@ public class EventRepeaterAutoConfiguration {
     private final ListenerCaller listenerCaller;
 
     @Bean
-    public EventRepeater eventRepeater() {
-        return new EventRepeater(listenerCaller);
+    public JoinQuitEventRepeater joinQuitEventRepeater() {
+        return new JoinQuitEventRepeater(listenerCaller);
+    }
+
+    @Bean
+    public ChatEventRepeater chatEventRepeater() {
+        return new ChatEventRepeater(listenerCaller);
     }
 }

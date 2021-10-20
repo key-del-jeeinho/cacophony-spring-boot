@@ -2,6 +2,7 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.event.events;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.EmbedMessageDto;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.MessageDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -14,9 +15,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public class ReactEvent implements Event {
-    private final EmbedMessageDto message;
+    private final MessageDto message;
     private final UserDto reactor;
     private final String emote;
+    private final EventType eventType;
 
     public enum EventType {
         ADD, REMOVE

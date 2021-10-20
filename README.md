@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/License-Apache2.0-lightgrey)
 [ ![](https://img.shields.io/badge/Orign-JDA-brightgreen) ](https://github.com/DV8FromTheWorld/JDA)
 
-<img align="right" src="https://github.com/key-del-jeeinho/cacophony-spring-boot/blob/master/logo.png" height="200" width="200">
+<img align="right" src="https://github.com/key-del-jeeinho/cacophony-spring-boot/blob/master/logo.png" height="250" width="250">
 
 # Cacophony Library
 

@@ -1,8 +1,6 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.trigger;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.JoinEvent;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.ChatEvent;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.*;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -49,7 +47,13 @@ public class TriggerGroup {
             return new TriggerGroup(list);
         }
 
+        public TriggerGroup onQuit() {
+            list.add(QuitEvent.class);
+            return new TriggerGroup(list);
+        }
+
         public TriggerGroup onReact() {
+            list.add(ReactEvent.class);
             return new TriggerGroup(list);
         }
     }

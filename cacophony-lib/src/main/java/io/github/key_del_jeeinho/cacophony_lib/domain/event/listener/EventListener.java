@@ -1,4 +1,4 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.listener;
+package io.github.key_del_jeeinho.cacophony_lib.domain.event.listener;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 
@@ -11,4 +11,7 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 @FunctionalInterface
 public interface EventListener<T extends Event> {
     void call(T event);
+    default T getInstance() {
+        return (T)new Event(){};
+    }
 }

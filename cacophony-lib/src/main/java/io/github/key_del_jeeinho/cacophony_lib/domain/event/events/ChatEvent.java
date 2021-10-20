@@ -2,6 +2,7 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.event.events;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.ChannelDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.MessageDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.entities.Message;
@@ -17,5 +18,10 @@ import net.dv8tion.jda.api.entities.Message;
 public class ChatEvent implements Event {
     private final ChannelDto channel;
     private final UserDto author;
-    private final Message message;
+    private final MessageDto message;
+    private final EventType eventType;
+
+    public enum EventType {
+        WRITE, EDIT, DELETE
+    }
 }

@@ -1,7 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
-import io.github.key_del_jeeinho.cacophony_lib.domain.listener.EventListener;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.listener.EventListener;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -17,17 +17,17 @@ import java.util.Map;
  */
 @Slf4j
 public class ListenerCaller {
-    Map<Class<? extends Event>, List<EventListener>> listeners;
+    Map<Class<? extends Event>, List<EventListener>> listenerMap;
 
     public ListenerCaller() {
-        this.listeners = new HashMap<>();
+        this.listenerMap = new HashMap<>();
     }
 
     public void callEvent(Event event) {
         Class<? extends Event> clazz = event.getClass();
-        if(listeners.containsKey(clazz)) {
+        if(listenerMap.containsKey(clazz)) {
             try {
-                listeners.get(clazz).forEach(listener -> listener.call(clazz.cast(event)));
+                listenerMap.get(clazz).forEach(listener -> listener.call(clazz.cast(event)));
             } catch (ClassCastException e) {
                 log.warn("Flow 의 Trigger 와 Action 에서 취급하는 Event 가 다릅니다!");
                 log.warn("발생한 이벤트(Trigger) : " + clazz.getSimpleName());
@@ -36,10 +36,10 @@ public class ListenerCaller {
         }
     }
 
-    public <T extends Event> void addListener(Class<T> clazz, EventListener listener) {
-        if(listeners.containsKey(clazz))
-            listeners.get(clazz).add(listener);
-        else listeners.put(clazz, new ArrayList<>(List.of(listener)));
+    public <T extends Event> void addListener(Class<T> clazz, EventListener<? extends Event> listener) {
+        if(listenerMap.containsKey(clazz))
+            listenerMap.get(clazz).add(listener);
+        else listenerMap.put(clazz, new ArrayList<>(List.of(listener)));
         System.out.println(clazz.getSimpleName() + "에 대한 listener 를 추가하였습니다!\n listener : " + listener);
     }
 }

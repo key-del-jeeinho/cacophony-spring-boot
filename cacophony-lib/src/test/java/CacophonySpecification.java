@@ -1,14 +1,3 @@
-import config.CacophonyConfiguration;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.ChatEvent;
-import io.github.key_del_jeeinho.cacophony_lib.domain.listener.EventListener;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-
-import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.onChat;
 import static org.mockito.Mockito.mock;
 
 /**

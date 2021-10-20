@@ -2,8 +2,6 @@ package io.github.key_del_jeeinho.cacophony_example;
 
 import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.prop.CacophonyProperties;
 import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.UseCacophony;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.ChatEvent;
-import io.github.key_del_jeeinho.cacophony_lib.domain.listener.EventListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -23,10 +21,13 @@ public class CacophonyApplication {
         ).doSomething(
                 event -> System.out.println(event.getClass().getSimpleName() + " 가 발생하였습니다!")
         ).complete();
+        /*
         when(
                 onChat().and().onReact()
         ).doSomething(
                 (EventListener<ChatEvent>) event -> System.out.println(event.getMessage().getJumpUrl())
         ).complete();
+
+         */
     }
 }

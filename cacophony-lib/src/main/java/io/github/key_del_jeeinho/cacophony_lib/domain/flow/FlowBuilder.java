@@ -2,7 +2,7 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.flow;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
-import io.github.key_del_jeeinho.cacophony_lib.domain.listener.EventListener;
+import io.github.key_del_jeeinho.cacophony_lib.domain.event.listener.EventListener;
 import io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerGroup;
 
 import java.util.List;

@@ -1,24 +1,16 @@
 package io.github.key_del_jeeinho.cacophony_example;
 
-import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.prop.CacophonyProperties;
-import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.UseCacophony;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.ReactEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.listeners.EventListener;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import io.github.key_del_jeeinho.cacophony_lib.global.config.CacophonyVanilla;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
 import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.*;
 
-@SpringBootApplication
-@UseCacophony
-@EnableConfigurationProperties(CacophonyProperties.class)
-public class CacophonyApplication {
+public class CacophonyVanillaApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CacophonyApplication.class, args);
-
+        CacophonyVanilla.start("TOKEN");
         when(
                 onDM().and().onJoin()
         ).doSomething(

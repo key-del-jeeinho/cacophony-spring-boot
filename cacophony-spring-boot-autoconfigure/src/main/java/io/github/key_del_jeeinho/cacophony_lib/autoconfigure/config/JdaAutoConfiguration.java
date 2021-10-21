@@ -1,7 +1,6 @@
 package io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config;
 
 import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.prop.CacophonyProperties;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.global.exception.BotCreationFailureException;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;

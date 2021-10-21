@@ -1,5 +1,8 @@
 package io.github.key_del_jeeinho.cacophony_lib.global.config;
 
+import io.github.key_del_jeeinho.cacophony_lib.domain.command.RootCommandBuilderGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandInputManager;
+import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandManager;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.ChatEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
@@ -26,13 +29,44 @@ public class CacophonyVanilla {
     private static ChatEventRepeater chatEventRepeater;
     private static JoinQuitEventRepeater joinQuitEventRepeater;
 
+    private static CommandInputManager commandInputManager;
+    private static CommandManager commandManager;
+
     public static void start(String token) {
         isUsed = true;
         FlowBuilderGenerator.init(listenerCaller());
+        RootCommandBuilderGenerator.init(commandManager());
         CacophonyVanilla.token = token;
+        
+        commandInputManager(); //커맨드 인풋을 받기 위해 수행한다
+        
         jda().addEventListener(reactEventRepeater());
         jda().addEventListener(chatEventRepeater());
         jda().addEventListener(joinQuitEventRepeater());
+    }
+
+    public static CommandInputManager getCommandInputManager() {
+        if(isUsed)
+            return commandInputManager();
+        else throw new UnusedConfigurationException("Cacophony Vanilla");
+    }
+    private static CommandInputManager commandInputManager() {
+        if(commandInputManager == null) {
+            commandInputManager = new CommandInputManager(commandManager());
+        }
+        return commandInputManager;
+    }
+
+    public static CommandManager getCommandManager() {
+        if(isUsed)
+            return getCommandManager();
+        else throw new UnusedConfigurationException("Cacophony Vanilla");
+    }
+    private static CommandManager commandManager() {
+        if(commandManager == null) {
+            commandManager = new CommandManager();
+        }
+        return commandManager;
     }
 
     public static JDA getJda() {

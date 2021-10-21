@@ -9,8 +9,8 @@ public class Command {
     private final CommandAction action;
     private final List<Command> children;
 
-    private static final CommandTrigger EMPTY_TRIGGER = new CommandTrigger("^.*$", true);
-    private static final CommandAction EMPTY_ACTION = argument -> {};
+    public static final CommandTrigger EMPTY_TRIGGER = new CommandTrigger("^.*$", true);
+    public static final CommandAction EMPTY_ACTION = argument -> {};
 
     public Command(CommandTrigger trigger, CommandAction action) {
         this.trigger = trigger;
@@ -31,10 +31,12 @@ public class Command {
     }
 
     public void execute(Argument argument) {
-        argument.initDepth(); //현재 송신된 인자를 root 로 가정한다
+        //argument.initDepth(); //현재 송신된 인자를 root 로 가정한다
         if(!trigger.apply(argument.getArgument())) return; //만약 해당 커맨드의 prefix 가 아닐경우
+        System.out.println("arg is " + argument.getArgument());
         action.accept(argument.getNext());
 
-        children.forEach(child -> child.execute(argument.getNext()));
+        if(!argument.isLeaf())
+            children.forEach(child -> child.execute(argument.getNext()));
     }
 }

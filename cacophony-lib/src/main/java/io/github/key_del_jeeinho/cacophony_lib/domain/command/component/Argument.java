@@ -19,7 +19,7 @@ public class Argument {
     }
     public Argument(String argument, Argument next) {
         //next argument 가 null 일경우, 해당 VArgument 가 leaf argument 이다.
-        this(argument, next, argument == null);
+        this(argument, next, next == null);
     }
     public Argument(String argument) {
         this(argument, null);

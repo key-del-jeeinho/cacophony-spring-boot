@@ -12,7 +12,7 @@ import static io.github.key_del_jeeinho.cacophony_lib.domain.command.CommandEntr
 
 public class CacophonyVanillaApplication {
     public static void main(String[] args) {
-        CacophonyVanilla.start("TOKEN");
+        CacophonyVanilla.start("ODk3MTI3NDc5OTIyMjc4NDYx.YWRJEw.b8qBeezI9EWCl49Tn2FJ76KsbJg");
         when(
                 onDM().and().onJoin()
         ).doSomething(
@@ -23,7 +23,7 @@ public class CacophonyVanillaApplication {
                 onChat().and().onReact()
         ).doSomething(
                 (EventListener<ChatEvent>) event -> System.out.println(event.getMessage())
-        ).complete();
+        );//.complete();
 
         when(
                 onReact()
@@ -33,19 +33,14 @@ public class CacophonyVanillaApplication {
 
         root("소고야",
                 command("인증",
-                        action((CommandAction) System.out::println),
-                        action((CommandAction) System.out::println)
+                        action(argument -> System.out.println(argument.getArgument()))
                 ),
 
                 command("도움말", action(() -> System.out.println("도움말입니다"))),
 
                 command("투표",
-                        command("열기",
-                                action((CommandAction) System.out::println),
-                                action((CommandAction) System.out::println)
-                                ),
-                        action((CommandAction)System.out::println)
-                        )
+                        action(() -> System.out.println("투표를 진행합니다!")),
+                        command("열기", System.out::println))
         ).complete();
     }
 }

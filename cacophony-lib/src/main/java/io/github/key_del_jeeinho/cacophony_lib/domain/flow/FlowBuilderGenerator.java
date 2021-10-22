@@ -15,8 +15,7 @@ public class FlowBuilderGenerator {
         return new FlowBuilder(listenerCaller);
     }
 
-    public static FlowBuilderGenerator init(ListenerCaller listenerCaller) {
+    public static void init(ListenerCaller listenerCaller) {
         FlowBuilderGenerator.listenerCaller = listenerCaller;
-        return new FlowBuilderGenerator();
     }
 }

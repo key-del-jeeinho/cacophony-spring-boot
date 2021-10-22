@@ -19,6 +19,7 @@ public class StaticInitializationAutoConfiguration {
 
     @Bean
     public FlowBuilderGenerator flowBuilderGenerator() {
-        return FlowBuilderGenerator.init((listenerCaller));
+        FlowBuilderGenerator.init((listenerCaller));
+        return new FlowBuilderGenerator();
     }
 }

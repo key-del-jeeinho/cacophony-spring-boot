@@ -10,10 +10,11 @@ repositories {
 }
 
 dependencies {
-    api project(":cacophony-lib:")
-    api project(":cacophony-spring-boot-autoconfigure:")
-    //implementation 'io.github.key-del-jeeinho:cacophony-spring-boot-starter:1.0.3-RELEASE'
-    //implementation 'io.github.key-del-jeeinho:cacophony-lib:1.0.3-RELEASE'
+    //implementation 'io.github.key-del-jeeinho:cacophony-spring-boot-starter:1.0.2-RELEASE'
+    //implementation 'io.github.key-del-jeeinho:cacophony-lib:1.0.2-RELEASE'
+    //implementation project(":cacophony-spring-boot-starter")
+    api project(":cacophony-lib")
+    api project(":cacophony-spring-boot-autoconfigure")
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'

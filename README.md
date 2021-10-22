@@ -177,6 +177,8 @@ dependencies {
 ```
 
 ## Wiki | 위키
-~~_COMMING SOON!_~~
+[이곳](https://github.com/key-del-jeeinho/cacophony-spring-boot/wiki) 에서 Cacophony 에 대한 자세한 정보들을 확인하실 수 있습니다!
 
 <a href="https://github.com/key-del-jeeinho/cacophony-spring-boot"><img align="center" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fkey-del-jeeinho%2Fcacophony-spring-boot&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+
+_Copyright 2021. JeeInho All pictures cannot be copied without permission._

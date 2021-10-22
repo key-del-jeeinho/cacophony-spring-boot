@@ -8,15 +8,15 @@ apply plugin: 'signing'
 
 group 'io.github.key-del-jeeinho'
 archivesBaseName = 'cacophony-spring-boot-starter'
-version '1.0.2-RELEASE'
+version '1.0.3-RELEASE'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    api 'io.github.key-del-jeeinho:cacophony-spring-boot-autoconfigure:1.0.2-RELEASE'
-    api 'io.github.key-del-jeeinho:cacophony-lib:1.0.2-RELEASE'
+    api 'io.github.key-del-jeeinho:cacophony-spring-boot-autoconfigure:1.0.3-RELEASE'
+    api 'io.github.key-del-jeeinho:cacophony-lib:1.0.3-RELEASE'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
     implementation 'org.springframework.boot:spring-boot-starter:2.5.5'
@@ -59,7 +59,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.key-del-jeeinho'
             artifactId = 'cacophony-spring-boot-starter'
-            version = '1.0.2-RELEASE'
+            version = '1.0.3-RELEASE'
 
             from components.java
             artifact sourcesJar

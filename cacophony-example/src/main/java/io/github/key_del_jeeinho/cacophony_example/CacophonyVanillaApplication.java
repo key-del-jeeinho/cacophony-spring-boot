@@ -1,6 +1,5 @@
 package io.github.key_del_jeeinho.cacophony_example;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.command.component.CommandAction;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.ReactEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.listeners.EventListener;
@@ -15,19 +14,19 @@ public class CacophonyVanillaApplication {
         CacophonyVanilla.start("ODk3MTI3NDc5OTIyMjc4NDYx.YWRJEw.b8qBeezI9EWCl49Tn2FJ76KsbJg");
         when(
                 onDM().and().onJoin()
-        ).doSomething(
+        ).doAction(
                 event -> System.out.println(event.getClass().getSimpleName() + " 가 발생하였습니다!")
         ).complete();
 
         when(
                 onChat().and().onReact()
-        ).doSomething(
+        ).doAction(
                 (EventListener<ChatEvent>) event -> System.out.println(event.getMessage())
         );//.complete();
 
         when(
                 onReact()
-        ).doSomething(
+        ).doAction(
                 (EventListener<ReactEvent>) event -> System.out.println("타입 : " + event.getEventType() + "이모지 : " + event.getEmote())
         ).complete();
 

@@ -18,19 +18,19 @@ public class CacophonySpringBootApplication {
 
         when(
                 onDM().and().onJoin()
-        ).doSomething(
+        ).doAction(
                 event -> System.out.println(event.getClass().getSimpleName() + " 가 발생하였습니다!")
         ).complete();
 
         when(
                 onChat().and().onReact()
-        ).doSomething(
+        ).doAction(
                 (EventListener<ChatEvent>) event -> System.out.println(event.getMessage())
         ).complete();
 
         when(
                 onReact()
-        ).doSomething(
+        ).doAction(
                 (EventListener<ReactEvent>) event -> System.out.println("타입 : " + event.getEventType() + "이모지 : " + event.getEmote())
         ).complete();
     }

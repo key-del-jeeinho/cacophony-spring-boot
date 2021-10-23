@@ -18,7 +18,7 @@ public class CommandInputManager {
         this.commandManager = commandManager;
         when(
                 onChat()
-        ).doSomething(
+        ).doAction(
                 (EventListener<ChatEvent>) event -> {
                     String chat = event.getMessage().getContent();
                     this.commandManager.execute(input(chat));

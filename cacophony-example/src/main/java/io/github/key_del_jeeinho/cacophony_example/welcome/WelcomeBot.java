@@ -9,7 +9,6 @@ import net.dv8tion.jda.api.JDA;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
@@ -18,7 +17,6 @@ import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntr
 
 @SpringBootApplication
 @UseCacophony
-@Component
 public class WelcomeBot {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(CacophonySpringBootApplication.class, args); //Main method 에서 Bean 을 Injection 하기위해 Context를 저장합니다

@@ -1,4 +1,4 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.entry.annotation;
+package io.github.key_del_jeeinho.cacophony_lib.global.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

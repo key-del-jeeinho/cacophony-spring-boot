@@ -2,6 +2,12 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.command.component;
 
 import lombok.Getter;
 
+/**
+ * 사용자의 입력을 Command Argument 형식으로 담아 저장하는 객체입니다
+ *
+ * @author JeeInho
+ * @since 1.0.3-SNAPSHOT
+ */
 public class Argument {
     @Getter
     private final Argument next;

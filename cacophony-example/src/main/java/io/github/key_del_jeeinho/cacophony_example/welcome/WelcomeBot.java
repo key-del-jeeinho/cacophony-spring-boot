@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
 import java.util.Objects;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.onJoin;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.onJoin;
 
 @SpringBootApplication
 @UseCacophony

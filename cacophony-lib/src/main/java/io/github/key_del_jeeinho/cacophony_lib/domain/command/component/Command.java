@@ -4,6 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 명령어에 대한 정보를 담는 객체입니다.
+ * Trigger-> Action and ChildrenCommand 로 이루어져있습니다
+ * CommandEntry 를 통해 생성할 수 있습니다
+ *
+ * @see io.github.key_del_jeeinho.cacophony_lib.domain.command.CommandEntry#command(String, Command...)
+ * @see io.github.key_del_jeeinho.cacophony_lib.domain.command.CommandEntry#command(String, CommandAction, Command...)
+ *
+ * @author JeeInho
+ * @since 1.0.3-SNAPSHOT
+ */
 public class Command {
     private final CommandTrigger trigger;
     private final CommandAction action;

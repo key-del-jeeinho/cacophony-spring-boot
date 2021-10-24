@@ -6,7 +6,7 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.event.listeners.EventListe
 import io.github.key_del_jeeinho.cacophony_lib.global.config.CacophonyVanilla;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.*;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.*;
 import static io.github.key_del_jeeinho.cacophony_lib.domain.command.CommandEntry.*;
 
 public class CacophonyVanillaApplication {

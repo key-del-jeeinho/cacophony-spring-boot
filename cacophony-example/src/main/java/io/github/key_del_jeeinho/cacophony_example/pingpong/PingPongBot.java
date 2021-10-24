@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.onChat;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.onChat;
 
 @SpringBootApplication
 @UseCacophony

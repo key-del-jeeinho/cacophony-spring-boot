@@ -1,7 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.flow;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.entry.annotation.EntryPoint;
-import io.github.key_del_jeeinho.cacophony_lib.domain.trigger.EntryGroup;
+import io.github.key_del_jeeinho.cacophony_lib.global.annotation.EntryPoint;
+import io.github.key_del_jeeinho.cacophony_lib.domain.entry.EntryGroup;
 
 /**
  * Flow 에 대한 진입지점입니다.

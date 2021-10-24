@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.onChat;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.onChat;
 
 public class CommandInputManager {
     private final CommandManager commandManager;

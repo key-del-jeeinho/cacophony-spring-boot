@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.*;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.*;
 
 @SpringBootApplication
 @UseCacophony

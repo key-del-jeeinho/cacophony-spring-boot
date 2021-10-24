@@ -1,6 +1,6 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.trigger;
+package io.github.key_del_jeeinho.cacophony_lib.domain.entry;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.entry.annotation.EntryPoint;
+import io.github.key_del_jeeinho.cacophony_lib.global.annotation.EntryPoint;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.JoinEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.QuitEvent;

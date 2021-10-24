@@ -3,7 +3,7 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.flow;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.listeners.EventListener;
-import io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerGroup;
+import io.github.key_del_jeeinho.cacophony_lib.domain.entry.EntryGroup;
 
 import java.util.List;
 
@@ -15,19 +15,19 @@ import java.util.List;
  */
 public class FlowBuilder<T extends Event> {
     private final ListenerCaller listenerCaller;
-    TriggerGroup triggers;
+    EntryGroup triggers;
     EventListener<T> doWhat;
 
     public FlowBuilder(ListenerCaller listenerCaller) {
         this.listenerCaller = listenerCaller;
     }
 
-    public FlowBuilder triggers(TriggerGroup triggers) {
+    public FlowBuilder when(EntryGroup triggers) {
         this.triggers = triggers;
         return this;
     }
 
-    public FlowBuilder doSomething(EventListener<T> doWhat) {
+    public FlowBuilder doAction(EventListener<T> doWhat) {
         this.doWhat = doWhat;
         return this;
     }

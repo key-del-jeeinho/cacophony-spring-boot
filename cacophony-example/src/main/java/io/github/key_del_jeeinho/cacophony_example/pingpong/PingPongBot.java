@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.trigger.TriggerEntry.onChat;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.onChat;
 
 @SpringBootApplication
 @UseCacophony
@@ -26,7 +26,7 @@ public class PingPongBot {
 
         when(//FlowBuilder 의 EntryPoint 입니다. Entry Block 을 설정합니다
                 onChat()//만약 채팅을 쳤을 경우
-        ).doSomething(//FlowBuilder 의 Method 입니다. Action Block 을 설정합니다
+        ).doAction(//FlowBuilder 의 Method 입니다. Action Block 을 설정합니다
                 (EventListener<ChatEvent>) event -> {//ChatEvent 형식으로 event 를 받아, 동작하는 action 임을 명시합니다
                     if(event.getEventType() != ChatEvent.EventType.WRITE ||//만약 채팅이 작성된것이 아닐 경우(ex, 삭제/수정 등)
                             jda.retrieveUserById(event.getAuthor().getId()).complete().isBot() || // 혹은 작성자가 봇일경우

@@ -1,6 +1,6 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.trigger;
+package io.github.key_del_jeeinho.cacophony_lib.domain.entry;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.entry.annotation.EntryPoint;
+import io.github.key_del_jeeinho.cacophony_lib.global.annotation.EntryPoint;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.JoinEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.QuitEvent;
@@ -18,42 +18,42 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.ServerR
  */
 public class TriggerEntry {
     @EntryPoint
-    public static TriggerGroup onChat() {
-        return new TriggerGroup(ChatEvent.class);
+    public static EntryGroup onChat() {
+        return new EntryGroup(ChatEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onDM() {
-        return new TriggerGroup(PrivateChatEvent.class);
+    public static EntryGroup onDM() {
+        return new EntryGroup(PrivateChatEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onChatAtServer() {
-        return new TriggerGroup(ServerChatEvent.class);
+    public static EntryGroup onChatAtServer() {
+        return new EntryGroup(ServerChatEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onJoin() {
-        return new TriggerGroup(JoinEvent.class);
+    public static EntryGroup onJoin() {
+        return new EntryGroup(JoinEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onQuit() {
-        return new TriggerGroup(QuitEvent.class);
+    public static EntryGroup onQuit() {
+        return new EntryGroup(QuitEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onReact() {
-        return new TriggerGroup(ReactEvent.class);
+    public static EntryGroup onReact() {
+        return new EntryGroup(ReactEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onReactAtPrivate() {
-        return new TriggerGroup(PrivateReactEvent.class);
+    public static EntryGroup onReactAtPrivate() {
+        return new EntryGroup(PrivateReactEvent.class);
     }
 
     @EntryPoint
-    public static TriggerGroup onReactAtServer() {
-        return new TriggerGroup(ServerReactEvent.class);
+    public static EntryGroup onReactAtServer() {
+        return new EntryGroup(ServerReactEvent.class);
     }
 }

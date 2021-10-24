@@ -4,7 +4,7 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.command.component.Argument
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.component.Command;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.component.CommandAction;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.component.CommandTrigger;
-import io.github.key_del_jeeinho.cacophony_lib.domain.entry.annotation.EntryPoint;
+import io.github.key_del_jeeinho.cacophony_lib.global.annotation.EntryPoint;
 
 import java.util.function.Consumer;
 

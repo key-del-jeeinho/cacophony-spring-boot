@@ -1,4 +1,4 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message;
+package io.github.key_del_jeeinho.cacophony_lib.global.dto.message;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

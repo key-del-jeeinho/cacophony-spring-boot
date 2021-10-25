@@ -1,9 +1,9 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.ChannelDto;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.MessageDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.MessageDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.enum_type.ChannelType;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.PrivateChatEvent;

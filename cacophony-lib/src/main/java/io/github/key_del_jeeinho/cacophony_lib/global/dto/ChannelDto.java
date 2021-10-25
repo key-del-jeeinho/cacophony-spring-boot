@@ -1,4 +1,4 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.event.dto;
+package io.github.key_del_jeeinho.cacophony_lib.global.dto;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.enum_type.ChannelType;
 import lombok.Getter;

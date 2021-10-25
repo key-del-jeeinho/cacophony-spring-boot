@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/download-v1.0.3-RELEASE-blue) 
+![](https://img.shields.io/badge/download-v1.0.3RELEASE-blue) 
 ![](https://img.shields.io/badge/License-Apache2.0-lightgrey)
 [ ![](https://img.shields.io/badge/Orign-JDA-brightgreen) ](https://github.com/DV8FromTheWorld/JDA)
 ![](https://img.shields.io/badge/GIVEME-STAR%F0%9F%8E%83-yellow)

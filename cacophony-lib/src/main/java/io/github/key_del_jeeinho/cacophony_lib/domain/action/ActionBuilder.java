@@ -1,16 +1,16 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.action;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.ChannelNotFoundException;
-import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.GuildNotFoundException;
+import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.RoleNotFoundException;
+import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.ServerNotFoundException;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.RoleDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.EmbedMessageDto;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.TextChannel;
-import org.jetbrains.annotations.NotNull;
 
 @RequiredArgsConstructor
 public class ActionBuilder {
@@ -36,18 +36,29 @@ public class ActionBuilder {
     }
 
     public void grantRole(long roleId, long userId, long serverId) {
-        getServerById(serverId).createRole()
-                //TODO
-                .complete();
+        Role role = getRoleById(serverId, roleId);
+        getServerById(serverId).addRoleToMember(userId, role).complete();
     }
 
     public void createRole(RoleDto role, long serverId) {
-        //TODO
+        Guild guild = getServerById(serverId);
+        guild.createRole()
+                .setName(role.getName())
+                .setColor(role.getColor())
+                .setPermissions(role.getPermissions())
+                .complete();
+    }
+
+    private Role getRoleById(long serverId, long roleId) {
+        Role role = getServerById(serverId).getRoleById(roleId);
+        if(role == null) throw new RoleNotFoundException(roleId);
+
+        return role;
     }
 
     private Guild getServerById(long serverId) {
         Guild guild = jda.getGuildById(serverId);
-        if(guild == null) throw new GuildNotFoundException(serverId);
+        if(guild == null) throw new ServerNotFoundException(serverId);
 
         return guild;
     }

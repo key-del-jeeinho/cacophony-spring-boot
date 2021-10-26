@@ -5,6 +5,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class GuildNotFoundException extends RuntimeException {
+public class ServerNotFoundException extends RuntimeException {
     private final long serverId;
 }

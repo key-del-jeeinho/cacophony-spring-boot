@@ -34,7 +34,4 @@ public class ActionEntry {
     public static void createRole(RoleDto role, long serverId) {
         ActionBuilderGenerator.generateDefault().createRole(role, serverId);
     }
-
-    //serverId, userId, roleId, messageId, channelId,
-    // message, embedMessage, emote, role
 }

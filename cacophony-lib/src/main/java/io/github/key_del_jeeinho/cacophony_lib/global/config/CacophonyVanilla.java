@@ -1,5 +1,6 @@
 package io.github.key_del_jeeinho.cacophony_lib.global.config;
 
+import io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionBuilderGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.RootCommandBuilderGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandInputManager;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandManager;
@@ -34,9 +35,11 @@ public class CacophonyVanilla {
 
     public static void start(String token) {
         isUsed = true;
+        CacophonyVanilla.token = token;
+
         FlowBuilderGenerator.init(listenerCaller());
         RootCommandBuilderGenerator.init(commandManager());
-        CacophonyVanilla.token = token;
+        ActionBuilderGenerator.init(jda());
         
         commandInputManager(); //커맨드 인풋을 받기 위해 수행한다
         

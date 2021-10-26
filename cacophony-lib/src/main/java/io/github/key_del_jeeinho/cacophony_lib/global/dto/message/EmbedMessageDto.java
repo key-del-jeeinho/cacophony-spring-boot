@@ -1,7 +1,9 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message;
+package io.github.key_del_jeeinho.cacophony_lib.global.dto.message;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.DiscordData;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.DiscordData;
 import lombok.Getter;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -52,5 +54,18 @@ public class EmbedMessageDto extends DiscordData {
 
     public void addEmoji(String emoji) {
         emojis.add(emoji);
+    }
+
+    public MessageEmbed toEmbed() {
+        EmbedBuilder builder = new EmbedBuilder();
+        builder.setTitle(title.getTitle(), title.getUrl())
+                .setDescription(description)
+                .setColor(color)
+                .setAuthor(author.getName(), author.getUrl(), author.getIconUrl())
+                .setFooter(footer.getText(), footer.getIconUrl());
+
+        sections.forEach(section -> builder.addField(section.getTitle(), section.getText(), section.getInline()));
+
+        return builder.build();
     }
 }

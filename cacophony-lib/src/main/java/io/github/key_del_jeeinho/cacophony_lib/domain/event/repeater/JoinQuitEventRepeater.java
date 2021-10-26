@@ -1,8 +1,8 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater;
 
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.ServerDto;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ServerDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.JoinEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.QuitEvent;
 import lombok.RequiredArgsConstructor;

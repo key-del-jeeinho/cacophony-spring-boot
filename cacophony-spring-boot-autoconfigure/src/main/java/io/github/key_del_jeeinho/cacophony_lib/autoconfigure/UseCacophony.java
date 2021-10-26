@@ -1,9 +1,6 @@
 package io.github.key_del_jeeinho.cacophony_lib.autoconfigure;
 
-import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config.EventRepeaterAutoConfiguration;
-import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config.JdaAutoConfiguration;
-import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config.ListenerCallerAutoConfiguration;
-import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config.StaticInitializationAutoConfiguration;
+import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config.*;
 import io.github.key_del_jeeinho.cacophony_lib.autoconfigure.prop.CacophonyProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
@@ -21,7 +18,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({EventRepeaterAutoConfiguration.class, StaticInitializationAutoConfiguration.class, JdaAutoConfiguration.class, ListenerCallerAutoConfiguration.class})
+@Import({EventRepeaterAutoConfiguration.class, StaticInitializationAutoConfiguration.class, JdaAutoConfiguration.class, ListenerCallerAutoConfiguration.class, CommandAutoConfiguration.class})
 @EnableConfigurationProperties(CacophonyProperties.class)
 public @interface UseCacophony {
 }

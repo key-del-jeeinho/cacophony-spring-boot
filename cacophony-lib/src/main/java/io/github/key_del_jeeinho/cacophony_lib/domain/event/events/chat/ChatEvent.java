@@ -1,12 +1,11 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.ChannelDto;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message.MessageDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.MessageDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.dv8tion.jda.api.entities.Message;
 
 /**
  * 유저가 채팅을 쳤을때 발생하는 이벤트입니다.

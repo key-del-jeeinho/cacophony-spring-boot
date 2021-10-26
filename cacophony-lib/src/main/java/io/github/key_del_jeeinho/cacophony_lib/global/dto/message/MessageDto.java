@@ -1,6 +1,6 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.message;
+package io.github.key_del_jeeinho.cacophony_lib.global.dto.message;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.DiscordData;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.DiscordData;
 import lombok.Getter;
 
 @Getter

@@ -1,7 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event.events;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.ServerDto;
-import io.github.key_del_jeeinho.cacophony_lib.domain.event.dto.UserDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ServerDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

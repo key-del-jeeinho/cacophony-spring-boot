@@ -10,8 +10,8 @@ import java.util.function.Consumer;
 
 public class CommandEntry {
     @EntryPoint
-    public static RootCommandBuilder root(String rootPrefix, Command... commands) {
-        return RootCommandBuilderGenerator.generateDefault(rootPrefix, commands);
+    public static RootCommand root(String rootPrefix, Command... commands) {
+        return RootCommandGenerator.generateDefault(rootPrefix, commands);
     }
 
     @EntryPoint

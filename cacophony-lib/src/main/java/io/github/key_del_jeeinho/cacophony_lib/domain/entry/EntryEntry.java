@@ -16,7 +16,7 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react.ServerR
  * @author JeeInho
  * @since 0.0.1-SNAPSHOT
  */
-public class TriggerEntry {
+public class EntryEntry {
     @EntryPoint
     public static EntryGroup onChat() {
         return new EntryGroup(ChatEvent.class);

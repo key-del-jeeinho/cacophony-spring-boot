@@ -10,10 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
-
+import static io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionEntry.*;
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.onChat;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.EntryEntry.onChat;
 
 @SpringBootApplication
 @UseCacophony
@@ -33,10 +32,9 @@ public class PingPongBot {
                             !event.getMessage().getContent().equals("ping")) //혹은 작성된 채팅이 ping 이 아닐경우
                         return;//동작을 종료합니다
 
-                        long channelId = event.getChannel().getId();//해당 채팅이 쳐진 채널의 id(snowflake) 를 구합니다
-                        //JDA 를 통해 이전에 구한 채널 채널ID 를 가지고 channel 을 불러옵니다
-                        // 이후, pong 이라는 채팅을 보냅니다.
-                        Objects.requireNonNull(jda.getTextChannelById(channelId)).sendMessage("pong").complete();
+                    long channelId = event.getChannel().getId();//해당 채팅이 쳐진 채널의 id(snowflake) 를 구합니다
+                    // 이후, channelId 를 통해 pong 이라는 채팅을 보냅니다.
+                    chat("pong", channelId);
                 }
         ).complete(); //Flow를 Build 하고 Cacophony 에 등록합니다
     }

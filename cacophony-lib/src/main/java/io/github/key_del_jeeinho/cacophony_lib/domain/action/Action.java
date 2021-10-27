@@ -1,19 +1,16 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.action;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.ChannelNotFoundException;
-import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.RoleNotFoundException;
-import io.github.key_del_jeeinho.cacophony_lib.domain.action.exception.ServerNotFoundException;
+import io.github.key_del_jeeinho.cacophony_lib.global.exception.ChannelNotFoundException;
+import io.github.key_del_jeeinho.cacophony_lib.global.exception.RoleNotFoundException;
+import io.github.key_del_jeeinho.cacophony_lib.global.exception.ServerNotFoundException;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.RoleDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.EmbedMessageDto;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.*;
 
 @RequiredArgsConstructor
-public class ActionBuilder {
+public class Action {
     private final JDA jda;
 
     public void chat(String message, long channelId) {
@@ -63,8 +60,10 @@ public class ActionBuilder {
         return guild;
     }
 
-    private TextChannel getChannelById(long channelId) {
-        TextChannel channel = jda.getTextChannelById(channelId);
+    private MessageChannel getChannelById(long channelId) {
+        MessageChannel channel = jda.getTextChannelById(channelId);
+        if(channel == null)
+            channel = jda.getPrivateChannelById(channelId);
         if(channel == null) throw new ChannelNotFoundException(channelId);
 
         return channel;

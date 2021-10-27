@@ -3,23 +3,28 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.command.manager;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.component.Argument;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.chat.ChatEvent;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.listeners.EventListener;
+import net.dv8tion.jda.api.JDA;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
-import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.TriggerEntry.onChat;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.EntryEntry.onChat;
 
 public class CommandInputManager {
     private final CommandManager commandManager;
+    private final JDA jda;
 
-    public CommandInputManager(CommandManager commandManager) {
+    public CommandInputManager(CommandManager commandManager, JDA jda) {
         this.commandManager = commandManager;
+        this.jda = jda;
         when(
                 onChat()
         ).doAction(
                 (EventListener<ChatEvent>) event -> {
+                    if(jda.getUserById(event.getAuthor().getId()) == null) return; //작성자가 bot 일경우
+
                     String chat = event.getMessage().getContent();
                     this.commandManager.execute(input(chat));
                 }

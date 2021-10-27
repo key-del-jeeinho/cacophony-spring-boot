@@ -8,14 +8,14 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
  * @author JeeInho
  * @since 0.0.1-SNAPSHOT
  */
-public class FlowBuilderGenerator {
+public class FlowGenerator {
     private static ListenerCaller listenerCaller;
 
-    public static FlowBuilder generateDefault() {
-        return new FlowBuilder(listenerCaller);
+    public static Flow generateDefault() {
+        return new Flow(listenerCaller);
     }
 
     public static void init(ListenerCaller listenerCaller) {
-        FlowBuilderGenerator.listenerCaller = listenerCaller;
+        FlowGenerator.listenerCaller = listenerCaller;
     }
 }

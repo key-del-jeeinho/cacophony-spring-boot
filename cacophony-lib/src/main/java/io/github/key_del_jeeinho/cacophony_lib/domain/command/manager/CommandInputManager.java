@@ -23,7 +23,7 @@ public class CommandInputManager {
                 onChat()
         ).doAction(
                 (EventListener<ChatEvent>) event -> {
-                    if(jda.getUserById(event.getAuthor().getId()) == null) return; //작성자가 bot 일경우
+                    if(jda.retrieveUserById(event.getAuthor().getId()).complete().isBot()) return; //작성자가 bot 일경우
 
                     String chat = event.getMessage().getContent();
                     this.commandManager.execute(input(chat));

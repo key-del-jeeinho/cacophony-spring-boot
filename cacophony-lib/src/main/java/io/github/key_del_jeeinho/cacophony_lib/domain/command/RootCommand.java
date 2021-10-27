@@ -16,6 +16,8 @@ public class RootCommand {
     }
 
     public void complete() {
+        System.out.println("새로운 root command 를 추가하였습니다!");
+        System.out.printf("Manager : %s\n Command : %s%n", commandManager.toString(), root.toString());
         commandManager.addRootCommand(root);
     }
 }

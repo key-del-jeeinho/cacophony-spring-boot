@@ -15,8 +15,8 @@ repositories {
 }
 
 dependencies {
-    api 'io.github.key-del-jeeinho:cacophony-spring-boot-autoconfigure:1.0.3-RELEASE'
-    api 'io.github.key-del-jeeinho:cacophony-lib:1.0.3-RELEASE'
+    api 'io.github.key-del-jeeinho:cacophony-spring-boot-autoconfigure:1.0.4-RELEASE'
+    api 'io.github.key-del-jeeinho:cacophony-lib:1.0.4-RELEASE'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
     implementation 'org.springframework.boot:spring-boot-starter:2.5.5'
@@ -48,10 +48,10 @@ signing {
 }
 
 javadoc {
-    options.addStringOption("locale","ko_KR");
-    options.addStringOption("encoding","UTF-8");
-    options.addStringOption("charset","UTF-8");
-    options.addStringOption("docencoding","UTF-8");
+    options.addStringOption("locale","ko_KR")
+    options.addStringOption("encoding","UTF-8")
+    options.addStringOption("charset","UTF-8")
+    options.addStringOption("docencoding","UTF-8")
 }
 
 publishing {

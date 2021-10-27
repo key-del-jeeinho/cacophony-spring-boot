@@ -14,7 +14,7 @@ public class ChannelDto extends DiscordData {
     private final ChannelType type;
     private final String name;
 
-    public ChannelDto(long id, ChannelType type, String name) {
+    public ChannelDto(long id, String name, ChannelType type) {
         super(id);
         this.type = type;
         this.name = name;

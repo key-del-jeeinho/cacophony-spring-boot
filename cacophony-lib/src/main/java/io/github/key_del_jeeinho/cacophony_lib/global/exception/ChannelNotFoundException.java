@@ -1,4 +1,4 @@
-package io.github.key_del_jeeinho.cacophony_lib.domain.action.exception;
+package io.github.key_del_jeeinho.cacophony_lib.global.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

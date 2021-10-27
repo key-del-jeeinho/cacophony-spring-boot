@@ -5,9 +5,6 @@ plugins {
     id 'signing'
 }
 
-group 'io.github.key-del-jeeinho'
-version '1.0.0-RELEASE'
-
 repositories {
     mavenCentral()
     maven {
@@ -72,7 +69,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.key-del-jeeinho'
             artifactId = 'cacophony-lib'
-            version = '1.0.3-RELEASE'
+            version = '1.0.4-RELEASE'
 
             from components.java
             artifact sourcesJar

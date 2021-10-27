@@ -40,13 +40,14 @@ public class ActionBuilder {
         getServerById(serverId).addRoleToMember(userId, role).complete();
     }
 
-    public void createRole(RoleDto role, long serverId) {
+    public RoleDto createRole(RoleDto role, long serverId) {
         Guild guild = getServerById(serverId);
-        guild.createRole()
+        long roleId = guild.createRole()
                 .setName(role.getName())
                 .setColor(role.getColor())
                 .setPermissions(role.getPermissions())
-                .complete();
+                .complete().getIdLong();
+        return new RoleDto(roleId, role.getName(), role.getColor(), role.getPermissions());
     }
 
     private Role getRoleById(long serverId, long roleId) {

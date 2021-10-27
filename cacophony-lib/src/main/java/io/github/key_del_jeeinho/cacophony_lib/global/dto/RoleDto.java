@@ -15,6 +15,14 @@ public class RoleDto extends DiscordData {
         this.permissions = permissions;
     }
 
+    public RoleDto(String name, Color color, List<Permission> permissions) {
+        this(-1, name, color, permissions);
+    }
+
+    public RoleDto(String name, Color color, Permission... permissions) {
+        this(-1, name, color, List.of(permissions));
+    }
+
     private final String name;
     private final Color color;
     private final List<Permission> permissions;

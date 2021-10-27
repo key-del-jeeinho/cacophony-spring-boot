@@ -31,7 +31,7 @@ public class ActionEntry {
     }
 
     @EntryPoint
-    public static void createRole(RoleDto role, long serverId) {
-        ActionBuilderGenerator.generateDefault().createRole(role, serverId);
+    public static RoleDto createRole(RoleDto role, long serverId) {
+        return ActionBuilderGenerator.generateDefault().createRole(role, serverId);
     }
 }

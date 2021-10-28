@@ -32,6 +32,10 @@ public class Action {
         getServerById(serverId).ban(Long.toString(userId), 0).complete();
     }
 
+    public void pardon(long userId, long serverId) {
+        getServerById(serverId).unban(Long.toString(userId)).complete();
+    }
+
     public void grantRole(long roleId, long userId, long serverId) {
         Role role = getRoleById(serverId, roleId);
         getServerById(serverId).addRoleToMember(userId, role).complete();

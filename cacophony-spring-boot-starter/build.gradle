@@ -32,12 +32,6 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
 }
 
-/*
-artifacts {
-    archives javadocJar, sourcesJar
-}
- */
-
 signing {
     sign publishing.publications
     //sign configurations.archives
@@ -52,7 +46,7 @@ javadoc {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+         maven(MavenPublication) {
             groupId = 'io.github.key-del-jeeinho'
             artifactId = 'cacophony-spring-boot-starter'
             version = '1.0.4-RELEASE'

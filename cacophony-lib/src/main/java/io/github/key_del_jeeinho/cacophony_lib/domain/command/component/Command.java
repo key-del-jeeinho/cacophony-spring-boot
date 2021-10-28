@@ -44,7 +44,6 @@ public class Command {
     public void execute(Argument argument) {
         //argument.initDepth(); //현재 송신된 인자를 root 로 가정한다
         if(!trigger.apply(argument.getArgument())) return; //만약 해당 커맨드의 prefix 가 아닐경우
-        System.out.println("arg is " + argument.getArgument());
         action.accept(argument.getNext());
 
         if(!argument.isLeaf())

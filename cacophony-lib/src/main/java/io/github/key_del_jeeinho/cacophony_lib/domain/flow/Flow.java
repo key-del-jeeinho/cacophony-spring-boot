@@ -13,21 +13,21 @@ import java.util.List;
  * @author JeeInho
  * @since 0.0.1-SNAPSHOT
  */
-public class FlowBuilder<T extends Event> {
+public class Flow<T extends Event> {
     private final ListenerCaller listenerCaller;
     EntryGroup triggers;
     EventListener<T> doWhat;
 
-    public FlowBuilder(ListenerCaller listenerCaller) {
+    public Flow(ListenerCaller listenerCaller) {
         this.listenerCaller = listenerCaller;
     }
 
-    public FlowBuilder when(EntryGroup triggers) {
+    public Flow when(EntryGroup triggers) {
         this.triggers = triggers;
         return this;
     }
 
-    public FlowBuilder doAction(EventListener<T> doWhat) {
+    public Flow doAction(EventListener<T> doWhat) {
         this.doWhat = doWhat;
         return this;
     }

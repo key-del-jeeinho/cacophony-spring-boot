@@ -1,14 +1,15 @@
 package io.github.key_del_jeeinho.cacophony_lib.global.config;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionBuilderGenerator;
-import io.github.key_del_jeeinho.cacophony_lib.domain.command.RootCommandBuilderGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.command.RootCommandGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandInputManager;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandManager;
+import io.github.key_del_jeeinho.cacophony_lib.domain.converter.ConverterGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.ChatEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.JoinQuitEventRepeater;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.repeater.ReactEventRepeater;
-import io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowBuilderGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.global.exception.BotCreationFailureException;
 import io.github.key_del_jeeinho.cacophony_lib.global.exception.UnusedConfigurationException;
 import net.dv8tion.jda.api.JDA;
@@ -37,9 +38,10 @@ public class CacophonyVanilla {
         isUsed = true;
         CacophonyVanilla.token = token;
 
-        FlowBuilderGenerator.init(listenerCaller());
-        RootCommandBuilderGenerator.init(commandManager());
-        ActionBuilderGenerator.init(jda());
+        FlowGenerator.init(listenerCaller());
+        RootCommandGenerator.init(commandManager());
+        ActionGenerator.init(jda());
+        ConverterGenerator.init(jda());
         
         commandInputManager(); //커맨드 인풋을 받기 위해 수행한다
         
@@ -55,7 +57,7 @@ public class CacophonyVanilla {
     }
     private static CommandInputManager commandInputManager() {
         if(commandInputManager == null) {
-            commandInputManager = new CommandInputManager(commandManager());
+            commandInputManager = new CommandInputManager(commandManager(), jda());
         }
         return commandInputManager;
     }

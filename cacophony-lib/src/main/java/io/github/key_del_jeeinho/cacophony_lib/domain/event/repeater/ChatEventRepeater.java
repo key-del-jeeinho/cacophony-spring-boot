@@ -80,10 +80,10 @@ public class ChatEventRepeater extends ListenerAdapter {
 
         //ChatEvent 에 들어갈 인자를 구성한다
         ChannelDto channel = new ChannelDto(
-                messageChannel.getIdLong(),
-                ChannelType.of(messageChannel.getType()),
-                messageChannel.getName()
-        );
+                        messageChannel.getIdLong(),
+                messageChannel.getName(),
+                ChannelType.of(messageChannel.getType())
+                );
         MessageDto msg = new MessageDto(messageId, message);
         //ChatEvent 를 Calling 한다
         listenerCaller.callEvent(

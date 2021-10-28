@@ -1,10 +1,11 @@
 package io.github.key_del_jeeinho.cacophony_lib.autoconfigure.config;
 
-import io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionBuilderGenerator;
-import io.github.key_del_jeeinho.cacophony_lib.domain.command.RootCommandBuilderGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.command.RootCommandGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.domain.command.manager.CommandManager;
+import io.github.key_del_jeeinho.cacophony_lib.domain.converter.ConverterGenerator;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.ListenerCaller;
-import io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowBuilderGenerator;
+import io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowGenerator;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import org.springframework.context.annotation.Bean;
@@ -24,20 +25,26 @@ public class StaticInitializationAutoConfiguration {
     private final JDA jda;
 
     @Bean
-    public FlowBuilderGenerator flowBuilderGenerator() {
-        FlowBuilderGenerator.init((listenerCaller));
-        return new FlowBuilderGenerator();
+    public FlowGenerator flowBuilderGenerator() {
+        FlowGenerator.init((listenerCaller));
+        return new FlowGenerator();
     }
 
     @Bean
-    public ActionBuilderGenerator actionBuilderGenerator() {
-        ActionBuilderGenerator.init(jda);
-        return new ActionBuilderGenerator();
+    public ActionGenerator actionBuilderGenerator() {
+        ActionGenerator.init(jda);
+        return new ActionGenerator();
     }
 
     @Bean
-    public RootCommandBuilderGenerator rootCommandBuilderGenerator() {
-        RootCommandBuilderGenerator.init(commandManager);
-        return new RootCommandBuilderGenerator();
+    public RootCommandGenerator rootCommandBuilderGenerator() {
+        RootCommandGenerator.init(commandManager);
+        return new RootCommandGenerator();
+    }
+
+    @Bean
+    public ConverterGenerator converterGenerator() {
+        ConverterGenerator.init(jda);
+        return new ConverterGenerator();
     }
 }

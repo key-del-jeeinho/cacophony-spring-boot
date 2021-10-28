@@ -11,7 +11,7 @@ import io.github.key_del_jeeinho.cacophony_lib.domain.entry.EntryGroup;
  */
 public class FlowEntry {
     @EntryPoint
-    public static FlowBuilder when(EntryGroup triggers) {
-        return FlowBuilderGenerator.generateDefault().when(triggers);
+    public static Flow when(EntryGroup triggers) {
+        return FlowGenerator.generateDefault().when(triggers);
     }
 }

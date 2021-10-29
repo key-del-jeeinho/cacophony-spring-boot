@@ -39,7 +39,7 @@ public class CacophonyVanillaApplication {
 
                 command("투표",
                         action(() -> System.out.println("투표를 진행합니다!")),
-                        command("열기", System.out::println))
+                        command("열기", action(System.out::print)))
         ).complete();
     }
 }

@@ -1,5 +1,9 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.command.component;
 
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.AuthorDto;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +25,7 @@ public class Command {
     private final List<Command> children;
 
     public static final CommandTrigger EMPTY_TRIGGER = new CommandTrigger("^.*$", true);
-    public static final CommandAction EMPTY_ACTION = argument -> {};
+    public static final CommandAction EMPTY_ACTION = (argument, author, channel) -> {};
 
     public Command(CommandTrigger trigger, CommandAction action) {
         this.trigger = trigger;
@@ -41,12 +45,12 @@ public class Command {
         children.addAll(Arrays.asList(commands));
     }
 
-    public void execute(Argument argument) {
+    public void execute(Argument argument, UserDto author, ChannelDto channel) {
         //argument.initDepth(); //현재 송신된 인자를 root 로 가정한다
         if(!trigger.apply(argument.getArgument())) return; //만약 해당 커맨드의 prefix 가 아닐경우
-        action.accept(argument.getNext());
+        action.accept(argument.getNext(), author, channel);
 
         if(!argument.isLeaf())
-            children.forEach(child -> child.execute(argument.getNext()));
+            children.forEach(child -> child.execute(argument.getNext(), author, channel));
     }
 }

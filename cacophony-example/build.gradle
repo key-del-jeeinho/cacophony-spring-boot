@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    //implementation 'io.github.key-del-jeeinho:cacophony-spring-boot-starter:1.0.2-RELEASE'
+    implementation 'io.github.key-del-jeeinho:cacophony-spring-boot-starter:1.0.2-RELEASE'
     //implementation 'io.github.key-del-jeeinho:cacophony-lib:1.0.2-RELEASE'
     //implementation project(":cacophony-spring-boot-starter")
     api project(":cacophony-lib")

@@ -27,31 +27,27 @@ public class CalculatorCommandBot {
 
         root("계산기",
                 command("더하기",
-                        action((argument, author, channel) -> {
-                            if(argument == null || argument.getNext() == null) return;
-                            chat("결과 : " + operate(argument, Integer::sum), channel.getId());
-                        })
+                        action((argument, author, channel) ->
+                                chat("결과 : " + operate(argument, Integer::sum), channel.getId()))
+                ).whenThrow(NullPointerException.class, (argument, b, channel, d) ->
+                        chat("잘못된 인자입니다.", channel.getId())
                 ),
                 command("빼기",
-                        action((argument, author, channel) -> {
-                            if(argument == null || argument.getNext() == null) return;
-                            chat("결과 : " + operate(argument, (a, b) -> a - b), channel.getId());
-                        })
+                        action((argument, author, channel) -> chat("결과 : " + operate(argument, (a, b) -> a - b), channel.getId()))
+                ).whenThrow(NullPointerException.class, (argument, b, channel, d) ->
+                        chat("잘못된 인자입니다.", channel.getId())
                 ),
                 command("곱하기",
-                        action((argument, author, channel) -> {
-                            if(argument == null || argument.getNext() == null) return;
-                            chat("결과 : " + operate(argument, (a, b) -> a * b), channel.getId());
-                        })
+                        action((argument, author, channel) -> chat("결과 : " + operate(argument, (a, b) -> a * b), channel.getId()))
+                ).whenThrow(NullPointerException.class, (argument, b, channel, d) ->
+                        chat("잘못된 인자입니다.", channel.getId())
                 ),
                 command("나누기",
-                        action((argument, author, channel) -> {
-                            if(argument == null || argument.getNext() == null) return;
-                            if(Integer.parseInt(argument.getNext().getArgument()) != 0)
-                                chat("결과 : " + operate(argument, (a, b) -> a / b), channel.getId());
-                            else chat("나눗셈의 제수는 0이 될 수 없습니다!", channel.getId());
-                        })
-                )
+                        action((argument, author, channel) -> chat("결과 : " + operate(argument, (a, b) -> a / b), channel.getId()))
+                ).whenThrow(NullPointerException.class, (argument, b, channel, d) ->
+                        chat("잘못된 인자입니다.", channel.getId())
+                ).whenThrow(ArithmeticException.class, (argument, b, channel, d) ->
+                        chat("0으로 나눌 수 없습니다.", channel.getId()))
         ).complete();
     }
 }

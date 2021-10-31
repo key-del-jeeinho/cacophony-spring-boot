@@ -2,11 +2,9 @@ package io.github.key_del_jeeinho.cacophony_lib.domain.command.component;
 
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
-import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.AuthorDto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 
 /**
  * 명령어에 대한 정보를 담는 객체입니다.
@@ -23,6 +21,7 @@ public class Command {
     private final CommandTrigger trigger;
     private final CommandAction action;
     private final List<Command> children;
+    private final List<CommandAdvice> advices;
 
     public static final CommandTrigger EMPTY_TRIGGER = new CommandTrigger("^.*$", true);
     public static final CommandAction EMPTY_ACTION = (argument, author, channel) -> {};
@@ -31,6 +30,7 @@ public class Command {
         this.trigger = trigger;
         this.action = action;
         children = new ArrayList<>();
+        advices = new ArrayList<>();
     }
 
     public Command(CommandTrigger trigger) {
@@ -45,10 +45,24 @@ public class Command {
         children.addAll(Arrays.asList(commands));
     }
 
+    public <T extends Throwable> Command whenThrow(Class<T> throwable, Consumer<T> advice) {
+        advices.add(new CommandAdvice<>(throwable, (a, b, c, exception) -> advice.accept(exception)));
+        return this;
+    }
+
+    public <T extends Throwable> Command whenThrow(Class<T> throwable, CommandErrorAction<T> advice) {
+        advices.add(new CommandAdvice<>(throwable, advice));
+        return this;
+    }
+
     public void execute(Argument argument, UserDto author, ChannelDto channel) {
         //argument.initDepth(); //현재 송신된 인자를 root 로 가정한다
         if(!trigger.apply(argument.getArgument())) return; //만약 해당 커맨드의 prefix 가 아닐경우
-        action.accept(argument.getNext(), author, channel);
+        try {
+            action.accept(argument.getNext(), author, channel);
+        } catch (Throwable throwable) {
+            advices.forEach(value -> value.applyIfCan(argument, author, channel, throwable));
+        }
 
         if(!argument.isLeaf())
             children.forEach(child -> child.execute(argument.getNext(), author, channel));

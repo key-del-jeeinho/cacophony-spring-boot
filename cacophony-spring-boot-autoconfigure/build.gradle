@@ -53,7 +53,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.key-del-jeeinho'
             artifactId = 'cacophony-spring-boot-autoconfigure'
-            version = '1.0.6-RELEASE'
+            version = '1.0.7-RELEASE'
 
             from components.java
             artifact sourcesJar

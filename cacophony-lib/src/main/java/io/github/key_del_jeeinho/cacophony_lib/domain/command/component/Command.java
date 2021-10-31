@@ -4,6 +4,7 @@ import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
 /**
@@ -61,7 +62,11 @@ public class Command {
         try {
             action.accept(argument.getNext(), author, channel);
         } catch (Throwable throwable) {
-            advices.forEach(value -> value.applyIfCan(argument, author, channel, throwable));
+            AtomicBoolean handled = new AtomicBoolean(false);
+            advices.forEach(value -> {
+                if(value.applyIfCan(argument, author, channel, throwable)) handled.set(true);
+            });
+            if(!handled.get()) throw throwable;
         }
 
         if(!argument.isLeaf())

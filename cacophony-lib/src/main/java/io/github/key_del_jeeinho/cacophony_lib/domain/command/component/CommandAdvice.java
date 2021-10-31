@@ -21,9 +21,10 @@ public class CommandAdvice<T extends Throwable> {
         this.advice.accept(argument, author, channel, throwable);
     }
 
-    public void applyIfCan(Argument argument, UserDto author, ChannelDto channel, Throwable throwable) {
+    public boolean applyIfCan(Argument argument, UserDto author, ChannelDto channel, Throwable throwable) {
         if(canAdvice(throwable.getClass())) {
             apply(argument, author, channel, this.throwable.cast(throwable));
-        }
+            return true;
+        } else return false;
     }
 }

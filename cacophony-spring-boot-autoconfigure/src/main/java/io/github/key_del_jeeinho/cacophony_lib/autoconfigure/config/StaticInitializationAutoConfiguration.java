@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * StaticClass 들의 구성정보를 초기화하기 위한 Configuration입니다
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @RequiredArgsConstructor
+@DependsOn({"jda", "listenerCaller", "commandManager"})
 public class StaticInitializationAutoConfiguration {
     private final CommandManager commandManager;
     private final ListenerCaller listenerCaller;

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * EventRepeater 를 사용하기 위한 Configuration입니다
@@ -17,9 +18,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @RequiredArgsConstructor
+@DependsOn({"jda", "listenerCaller"})
 public class EventRepeaterAutoConfiguration {
-    private final ListenerCaller listenerCaller;
     private final JDA jda;
+    private final ListenerCaller listenerCaller;
 
     @Bean
     public JoinQuitEventRepeater joinQuitEventRepeater() {

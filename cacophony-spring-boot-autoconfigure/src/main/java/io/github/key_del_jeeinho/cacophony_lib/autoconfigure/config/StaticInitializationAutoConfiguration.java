@@ -19,34 +19,12 @@ import org.springframework.context.annotation.DependsOn;
  * @since 0.0.1-SNAPSHOT
  */
 @Configuration
-@RequiredArgsConstructor
 @DependsOn({"jda", "listenerCaller", "commandManager"})
 public class StaticInitializationAutoConfiguration {
-    private final CommandManager commandManager;
-    private final ListenerCaller listenerCaller;
-    private final JDA jda;
-
-    @Bean
-    public FlowGenerator flowBuilderGenerator() {
+    public StaticInitializationAutoConfiguration(CommandManager commandManager, ListenerCaller listenerCaller, JDA jda) {
         FlowGenerator.init((listenerCaller));
-        return new FlowGenerator();
-    }
-
-    @Bean
-    public ActionGenerator actionBuilderGenerator() {
         ActionGenerator.init(jda);
-        return new ActionGenerator();
-    }
-
-    @Bean
-    public RootCommandGenerator rootCommandBuilderGenerator() {
         RootCommandGenerator.init(commandManager);
-        return new RootCommandGenerator();
-    }
-
-    @Bean
-    public ConverterGenerator converterGenerator() {
         ConverterGenerator.init(jda);
-        return new ConverterGenerator();
     }
 }

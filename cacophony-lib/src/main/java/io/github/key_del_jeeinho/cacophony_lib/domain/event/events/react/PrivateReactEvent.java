@@ -1,5 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react;
 
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ServerDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.MessageDto;
 
@@ -10,7 +12,7 @@ import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.MessageDto;
  * @since 1.0.2-RELEASE
  */
 public class PrivateReactEvent extends ReactEvent{
-    public PrivateReactEvent(MessageDto message, UserDto reactor, String emote, EventType eventType) {
-        super(message, reactor, emote, eventType);
+    public PrivateReactEvent(MessageDto message, UserDto reactor, String emote, EventType eventType, ChannelDto channel) {
+        super(message, reactor, emote, eventType, channel);
     }
 }

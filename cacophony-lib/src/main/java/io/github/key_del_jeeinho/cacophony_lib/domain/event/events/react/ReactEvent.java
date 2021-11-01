@@ -1,5 +1,7 @@
 package io.github.key_del_jeeinho.cacophony_lib.domain.event.events.react;
 
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ChannelDto;
+import io.github.key_del_jeeinho.cacophony_lib.global.dto.ServerDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.UserDto;
 import io.github.key_del_jeeinho.cacophony_lib.global.dto.message.MessageDto;
 import io.github.key_del_jeeinho.cacophony_lib.domain.event.events.Event;
@@ -19,6 +21,7 @@ public class ReactEvent implements Event {
     private final UserDto reactor;
     private final String emote;
     private final EventType eventType;
+    private final ChannelDto channel;
 
     public enum EventType {
         ADD, REMOVE

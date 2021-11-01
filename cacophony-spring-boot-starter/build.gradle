@@ -12,8 +12,8 @@ repositories {
 }
 
 dependencies {
-    api 'io.github.key-del-jeeinho:cacophony-spring-boot-autoconfigure:1.0.7-RELEASE_FIX0.1'
-    api 'io.github.key-del-jeeinho:cacophony-lib:1.0.7-RELEASE'
+    api 'io.github.key-del-jeeinho:cacophony-spring-boot-autoconfigure:1.0.7-RELEASE'
+    api 'io.github.key-del-jeeinho:cacophony-lib:1.0.7-RELEASE_FIX0.2'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
     implementation 'org.springframework.boot:spring-boot-starter:2.5.5'

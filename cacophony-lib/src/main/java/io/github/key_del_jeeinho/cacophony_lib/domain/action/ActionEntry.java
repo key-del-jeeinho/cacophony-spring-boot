@@ -6,13 +6,13 @@ import io.github.key_del_jeeinho.cacophony_lib.global.dto.RoleDto;
 
 public class ActionEntry {
     @EntryPoint
-    public static void chat(String message, long channelId) {
-        ActionGenerator.generateDefault().chat(message, channelId);
+    public static long chat(String message, long channelId) {
+        return ActionGenerator.generateDefault().chat(message, channelId);
     }
 
     @EntryPoint
-    public static void chat(EmbedMessageDto embedMessage, long channelId) {
-        ActionGenerator.generateDefault().chat(embedMessage, channelId);
+    public static long chat(EmbedMessageDto embedMessage, long channelId) {
+        return ActionGenerator.generateDefault().chat(embedMessage, channelId);
     }
 
     @EntryPoint

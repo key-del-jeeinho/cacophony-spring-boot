@@ -12,8 +12,8 @@ repositories {
 dependencies {
     implementation project(':cacophony-lib')
 
-    implementation 'org.springframework.boot:spring-boot:2.5.5'
-    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.5.5'
+    implementation 'org.springframework.boot:spring-boot:2.5.6'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:2.5.6'
 }
 
 test {
@@ -53,7 +53,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.key-del-jeeinho'
             artifactId = 'cacophony-spring-boot-autoconfigure'
-            version = '1.0.7-RELEASE'
+            version = '1.0.8-RELEASE'
 
             from components.java
             artifact sourcesJar

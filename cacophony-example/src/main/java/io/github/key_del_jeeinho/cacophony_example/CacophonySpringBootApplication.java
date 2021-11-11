@@ -23,7 +23,7 @@ public class CacophonySpringBootApplication {
         ).complete();
 
         when(
-                onChat().and().onReact()
+                onChat()
         ).doAction(
                 (EventListener<ChatEvent>) event -> System.out.println(event.getMessage())
         ).complete();
@@ -31,7 +31,7 @@ public class CacophonySpringBootApplication {
         when(
                 onReact()
         ).doAction(
-                (EventListener<ReactEvent>) event -> System.out.println("타입 : " + event.getEventType() + "이모지 : " + event.getEmote())
+                (EventListener<ReactEvent>) event -> System.out.println("타입 : " + event.getEventType() + "이모지 : " + event.getEmote() + "채널 : " + event.getChannel().getId())
         ).complete();
     }
 }

@@ -13,13 +13,14 @@ import net.dv8tion.jda.api.entities.*;
 public class Action {
     private final JDA jda;
 
-    public void chat(String message, long channelId) {
-        getChannelById(channelId)
-                .sendMessage(message).complete();
+    public long chat(String message, long channelId) {
+        return getChannelById(channelId)
+                .sendMessage(message).complete().getIdLong();
     }
 
-    public void chat(EmbedMessageDto embedMessage, long channelId) {
-        getChannelById(channelId).sendMessageEmbeds(embedMessage.toEmbed()).complete();
+    public long chat(EmbedMessageDto embedMessage, long channelId) {
+        return getChannelById(channelId)
+                .sendMessageEmbeds(embedMessage.toEmbed()).complete().getIdLong();
     }
 
     public void react(String emote, long messageId, long channelId) {

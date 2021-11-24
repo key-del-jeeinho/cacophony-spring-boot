@@ -63,7 +63,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'io.github.key-del-jeeinho'
             artifactId = 'cacophony-lib'
-            version = '1.0.8FIX-RELEASE'
+            version = '1.1.0-RELEASE'
 
             from components.java
             artifact sourcesJar

@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.*;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 @RequiredArgsConstructor
 public class Action {
     private final JDA jda;
@@ -19,8 +21,13 @@ public class Action {
     }
 
     public long chat(EmbedMessageDto embedMessage, long channelId) {
-        return getChannelById(channelId)
-                .sendMessageEmbeds(embedMessage.toEmbed()).complete().getIdLong();
+        AtomicLong id = new AtomicLong();
+        getChannelById(channelId)
+                .sendMessageEmbeds(embedMessage.toEmbed()).queue(message -> {
+                    embedMessage.getEmojis().forEach(emoji -> message.addReaction(emoji).queue());
+                    id.set(message.getIdLong());
+                });
+        return id.get();
     }
 
     public void react(String emote, long messageId, long channelId) {

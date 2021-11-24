@@ -11,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import static io.github.key_del_jeeinho.cacophony_lib.domain.action.ActionEntry.*;
+import static io.github.key_del_jeeinho.cacophony_lib.domain.converter.ConverterEntry.channelById;
 import static io.github.key_del_jeeinho.cacophony_lib.domain.flow.FlowEntry.when;
 import static io.github.key_del_jeeinho.cacophony_lib.domain.entry.EntryEntry.onChat;
 
@@ -34,7 +35,7 @@ public class PingPongBot {
 
                     long channelId = event.getChannel().getId();//해당 채팅이 쳐진 채널의 id(snowflake) 를 구합니다
                     // 이후, channelId 를 통해 pong 이라는 채팅을 보냅니다.
-                    chat("pong", channelId);
+                    chat(channelById(channelId, event.getChannel().getType()).getName() + "pong", channelId);
                 }
         ).complete(); //Flow를 Build 하고 Cacophony 에 등록합니다
     }
